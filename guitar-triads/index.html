@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gitar Bulucu — Triad · Gam · Mod</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0d0d1a;
+  color: #e0e0ee;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  padding: 20px 14px 48px;
+}
+
+.app { max-width: 1000px; margin: 0 auto; }
+
+header { text-align: center; margin-bottom: 24px; }
+
+h1 {
+  font-size: 2em; font-weight: 800;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 50%, #6bcb77 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  letter-spacing: -0.5px; margin-bottom: 5px;
+}
+.subtitle { color: #505070; font-size: 0.82em; letter-spacing: 0.5px; }
+
+/* ── Controls ── */
+.controls {
+  background: #13132a; border: 1px solid #1e1e3a; border-radius: 16px;
+  padding: 18px 22px; margin-bottom: 18px;
+  display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end;
+}
+.ctrl-group { display: flex; flex-direction: column; gap: 8px; }
+.ctrl-label {
+  font-size: 0.66em; text-transform: uppercase;
+  letter-spacing: 1.8px; color: #505070; font-weight: 600;
+}
+.btn-row { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.note-btn {
+  width: 37px; height: 33px;
+  border: 1px solid #242442; background: #191932; color: #8888aa;
+  border-radius: 7px; cursor: pointer; font-size: 0.77em; font-weight: 500;
+  transition: all 0.11s; display: flex; align-items: center; justify-content: center;
+}
+.note-btn:hover  { border-color: #ff6b6b; color: #ff6b6b; }
+.note-btn.active { background: #ff6b6b; border-color: #ff6b6b; color: #fff; font-weight: 700; }
+.note-btn.sharp  { color: #6666888; font-size: 0.71em; }
+.note-btn.sharp.active { color: #fff; }
+
+.hand-toggle {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 16px; border: 2px solid #242442; background: #191932;
+  color: #8888aa; border-radius: 20px; cursor: pointer; font-size: 0.83em;
+  font-weight: 500; transition: all 0.18s; white-space: nowrap;
+}
+.hand-toggle:hover  { border-color: #ffd93d; color: #ffd93d; }
+.hand-toggle.active { border-color: #ffd93d; color: #ffd93d; background: #1c1a08; }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex; gap: 3px;
+  background: #0a0a14; border: 1px solid #1e1e3a;
+  border-radius: 12px; padding: 4px; margin-bottom: 20px;
+  width: fit-content;
+}
+.tab-btn {
+  padding: 9px 22px; border: none; background: transparent;
+  color: #505070; border-radius: 9px; cursor: pointer;
+  font-size: 0.88em; font-weight: 600; transition: all 0.15s;
+}
+.tab-btn:hover  { color: #9090b0; }
+.tab-btn.active { background: #1e1e3a; color: #e0e0ee; }
+
+/* ── Tab controls bar ── */
+.tab-controls {
+  background: #13132a; border: 1px solid #1e1e3a; border-radius: 12px;
+  padding: 14px 20px; margin-bottom: 18px;
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-end;
+}
+
+.type-btn {
+  padding: 7px 14px; border: 1px solid #242442; background: #191932;
+  color: #8888aa; border-radius: 7px; cursor: pointer;
+  font-size: 0.81em; font-weight: 500; transition: all 0.11s; white-space: nowrap;
+}
+.type-btn:hover  { border-color: #4ecdc4; color: #4ecdc4; }
+.type-btn.active { background: #4ecdc4; border-color: #4ecdc4; color: #0d0d1a; font-weight: 700; }
+
+.scale-btn {
+  padding: 7px 14px; border: 1px solid #242442; background: #191932;
+  color: #8888aa; border-radius: 7px; cursor: pointer;
+  font-size: 0.79em; font-weight: 500; transition: all 0.11s; white-space: nowrap;
+}
+.scale-btn:hover  { border-color: #a78bfa; color: #a78bfa; }
+.scale-btn.active { background: #a78bfa; border-color: #a78bfa; color: #0d0d1a; font-weight: 700; }
+
+.display-btn {
+  padding: 7px 14px; border: 1px solid #242442; background: #191932;
+  color: #8888aa; border-radius: 7px; cursor: pointer;
+  font-size: 0.79em; font-weight: 500; transition: all 0.11s;
+}
+.display-btn:hover  { border-color: #6bcb77; color: #6bcb77; }
+.display-btn.active { background: #232a1e; border-color: #6bcb77; color: #6bcb77; font-weight: 700; }
+
+/* ── Info bar ── */
+.info-bar {
+  text-align: center; margin-bottom: 20px; padding: 14px 16px;
+  background: #13132a; border-radius: 12px; border: 1px solid #1e1e3a;
+}
+.info-name  { font-size: 1.55em; font-weight: 800; color: #fff; margin-bottom: 3px; }
+.info-sub   { font-size: 0.78em; color: #505070; letter-spacing: 0.5px; }
+.info-sub span { color: #8888aa; margin: 0 3px; font-weight: 600; }
+
+/* ── Triad legend ── */
+.legend {
+  display: flex; gap: 18px; justify-content: center;
+  margin-bottom: 22px; flex-wrap: wrap;
+}
+.legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.76em; }
+.legend-dot  { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+.legend-text { color: #505070; }
+
+/* ── String group sections (triads) ── */
+.section        { margin-bottom: 26px; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 13px; }
+.section-line   { flex: 1; height: 1px; background: #1a1a30; }
+.section-title  {
+  font-size: 0.68em; text-transform: uppercase; letter-spacing: 2.5px;
+  color: #383858; white-space: nowrap; font-weight: 600;
+}
+.shapes-row { display: flex; flex-wrap: wrap; gap: 13px; }
+.shape-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 13px 11px 9px; background: #13132a; border: 1px solid #1c1c38;
+  border-radius: 11px; transition: border-color 0.14s, transform 0.12s, box-shadow 0.12s;
+}
+.shape-card:hover {
+  border-color: #2c2c58; transform: translateY(-3px);
+  box-shadow: 0 7px 22px rgba(0,0,0,0.45);
+}
+.shape-inv      { font-size: 0.74em; color: #6868a0; font-weight: 600; text-align: center; }
+.shape-fretlabel{ font-size: 0.63em; color: #38385a; font-family: monospace; }
+.no-shape       { padding: 14px 18px; color: #282840; font-size: 0.73em; font-style: italic; text-align: center; }
+
+/* ── Scale neck container ── */
+.neck-wrap {
+  background: #10101f; border: 1px solid #1e1e3a; border-radius: 14px;
+  padding: 16px 12px 12px; margin-bottom: 20px; overflow-x: auto;
+}
+.neck-svg { display: block; width: 100%; max-width: 700px; margin: 0 auto; }
+
+/* ── Scale info panel ── */
+.scale-info {
+  background: #13132a; border: 1px solid #1e1e3a; border-radius: 12px;
+  padding: 18px 20px; margin-bottom: 20px;
+}
+.scale-info-title {
+  font-size: 0.67em; text-transform: uppercase; letter-spacing: 2px;
+  color: #404060; font-weight: 600; margin-bottom: 14px;
+}
+.scale-degrees {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+}
+.degree-pill {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 8px 12px; border-radius: 9px; min-width: 44px;
+  border: 1px solid #1e1e3a;
+}
+.degree-pill.is-root { border-color: #ff6b6b44; background: #2a0e0e; }
+.degree-num  { font-size: 0.65em; color: #404060; font-weight: 600; margin-bottom: 3px; }
+.degree-note { font-size: 0.95em; font-weight: 700; }
+.degree-int  { font-size: 0.62em; margin-top: 2px; }
+
+.scale-formula {
+  font-size: 0.78em; color: #505070; letter-spacing: 0.5px;
+  font-family: monospace;
+}
+.scale-formula span { color: #8080a8; }
+
+.mode-relation {
+  margin-top: 12px; padding: 10px 14px;
+  background: #0f0f22; border-radius: 8px; border: 1px solid #1e1e3a;
+  font-size: 0.78em; color: #606080;
+}
+.mode-relation strong { color: #a78bfa; }
+
+/* ── Scale legend ── */
+.scale-legend {
+  display: flex; gap: 16px; margin-bottom: 14px; flex-wrap: wrap;
+}
+.scale-legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.74em; color: #505070; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  h1 { font-size: 1.5em; }
+  .controls, .tab-controls { padding: 13px 14px; gap: 14px; }
+  .shapes-row { gap: 9px; }
+  .shape-card { padding: 10px 8px 8px; }
+  .tabs { width: 100%; }
+  .tab-btn { flex: 1; padding: 9px 10px; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>&#127928; Gitar Bulucu</h1>
+    <p class="subtitle">Triad &middot; Gam &middot; Mod &mdash; Parmak pozisyonlarını gitar sapı üzerinde görün</p>
+  </header>
+
+  <!-- Shared controls -->
+  <div class="controls">
+    <div class="ctrl-group">
+      <div class="ctrl-label">Kök Nota / Root</div>
+      <div class="btn-row" id="noteButtons"></div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-label">El / Hand</div>
+      <button class="hand-toggle" id="handToggle" onclick="toggleHand()">
+        <span>&#9996;</span>
+        <span id="handLabel">Sağ El (Standart)</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Tab bar -->
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-btn-triads" onclick="switchTab('triads')">&#127928; Triadlar</button>
+    <button class="tab-btn" id="tab-btn-scales" onclick="switchTab('scales')">&#127926; Gamlar &amp; Modlar</button>
+  </div>
+
+  <!-- ═══ TRIAD PANEL ═══ -->
+  <div id="panel-triads">
+    <div class="tab-controls">
+      <div class="ctrl-group">
+        <div class="ctrl-label">Triad Türü / Type</div>
+        <div class="btn-row" id="typeButtons"></div>
+      </div>
+    </div>
+
+    <div class="info-bar">
+      <div class="info-name" id="chordBig"></div>
+      <div class="info-sub"  id="chordNotes"></div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#ff6b6b"></div>
+        <span class="legend-text">Kök / Root (R)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#4ecdc4"></div>
+        <span class="legend-text">3. / 3rd</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#ffd93d"></div>
+        <span class="legend-text">5. / 5th</span>
+      </div>
+      <div class="legend-item">
+        <div style="width:13px;height:13px;border-radius:50%;border:2px solid #4ecdc4;flex-shrink:0"></div>
+        <span class="legend-text">Açık Tel / Open</span>
+      </div>
+      <div class="legend-item">
+        <div style="width:13px;height:13px;display:flex;align-items:center;justify-content:center;color:#38385a;font-size:10px;font-weight:700;flex-shrink:0">&#10005;</div>
+        <span class="legend-text">Çalınmıyor / Muted</span>
+      </div>
+    </div>
+
+    <div id="triadContent"></div>
+  </div>
+
+  <!-- ═══ SCALE PANEL ═══ -->
+  <div id="panel-scales" style="display:none">
+    <div class="tab-controls">
+      <div class="ctrl-group">
+        <div class="ctrl-label">Gamlar / Scales</div>
+        <div class="btn-row" id="scaleButtons"></div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Modlar / Modes</div>
+        <div class="btn-row" id="modeButtons"></div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Göster / Show</div>
+        <div class="btn-row" id="displayButtons">
+          <button class="display-btn active" data-disp="notes"     onclick="setDisplay('notes')">Nota Adı</button>
+          <button class="display-btn"        data-disp="intervals" onclick="setDisplay('intervals')">Aralık</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-bar">
+      <div class="info-name" id="scaleBig"></div>
+      <div class="info-sub"  id="scaleSub"></div>
+    </div>
+
+    <div class="scale-legend">
+      <div class="scale-legend-item">
+        <div class="legend-dot" style="background:#ff6b6b"></div>Kök / Root
+      </div>
+      <div class="scale-legend-item">
+        <div class="legend-dot" style="background:#4a8fff"></div>Gam Notu / Scale Note
+      </div>
+    </div>
+
+    <div class="neck-wrap">
+      <svg id="neckSvg" class="neck-svg"></svg>
+    </div>
+
+    <div id="scaleInfoPanel"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════════════════════════
+
+const NOTE_DISPLAY = ['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
+const OPEN_MIDI    = [40, 45, 50, 55, 59, 64]; // idx 0=low E ... 5=high e
+const STR_NAMES    = ['E','A','D','G','B','e'];
+const STR_WIDTHS   = [2.5, 2.0, 1.7, 1.3, 1.0, 0.7];
+
+const INTERVAL_LABEL = {
+  0:'R', 1:'b2', 2:'2', 3:'b3', 4:'3', 5:'4',
+  6:'b5', 7:'5', 8:'b6', 9:'6', 10:'b7', 11:'7'
+};
+
+const TRIAD_INTERVALS = { major:[0,4,7], minor:[0,3,7], dim:[0,3,6], aug:[0,4,8] };
+const TRIAD_LABELS    = { major:'Major', minor:'Minor', dim:'Eksik / Dim', aug:'Artık / Aug' };
+const TRIAD_SUFFIX    = { major:'', minor:'m', dim:'°', aug:'+' };
+
+const GROUP_TITLES = [
+  '6–5–4 Teli (E A D)', '5–4–3 Teli (A D G)',
+  '4–3–2 Teli (D G B)', '3–2–1 Teli (G B e)'
+];
+const INV_NAMES = ['Temel Durum / Root','1. Çevirme / 1st Inv','2. Çevirme / 2nd Inv'];
+const ROLE_COLORS = ['#ff6b6b','#4ecdc4','#ffd93d'];
+const ROLE_LABELS = ['R','3','5'];
+
+// Gam & Mod data  { id, name, nameEn, intervals, modeNum (if mode), description }
+const SCALE_DATA = [
+  // ── Gamlar ──
+  { id:'major',      name:'Majör',             nameEn:'Major',               intervals:[0,2,4,5,7,9,11],  group:'scale' },
+  { id:'natminor',   name:'Doğal Minör',        nameEn:'Natural Minor',       intervals:[0,2,3,5,7,8,10],  group:'scale' },
+  { id:'harmminor',  name:'Armonik Minör',       nameEn:'Harmonic Minor',      intervals:[0,2,3,5,7,8,11],  group:'scale' },
+  { id:'melminor',   name:'Melodik Minör',        nameEn:'Melodic Minor',       intervals:[0,2,3,5,7,9,11],  group:'scale' },
+  { id:'majpenta',   name:'Majör Pentatonik',     nameEn:'Major Pentatonic',    intervals:[0,2,4,7,9],       group:'scale' },
+  { id:'minpenta',   name:'Minör Pentatonik',     nameEn:'Minor Pentatonic',    intervals:[0,3,5,7,10],      group:'scale' },
+  { id:'blues',      name:'Blues',               nameEn:'Blues',               intervals:[0,3,5,6,7,10],    group:'scale' },
+  // ── Modlar ──
+  { id:'ionian',     name:'İyon',               nameEn:'Ionian (Major)',       intervals:[0,2,4,5,7,9,11],  group:'mode', modeNum:1 },
+  { id:'dorian',     name:'Dorian',             nameEn:'Dorian',               intervals:[0,2,3,5,7,9,10],  group:'mode', modeNum:2 },
+  { id:'phrygian',   name:'Frijiyen',           nameEn:'Phrygian',             intervals:[0,1,3,5,7,8,10],  group:'mode', modeNum:3 },
+  { id:'lydian',     name:'Lidyen',             nameEn:'Lydian',               intervals:[0,2,4,6,7,9,11],  group:'mode', modeNum:4 },
+  { id:'mixolydian', name:'Miksiolidyen',        nameEn:'Mixolydian',           intervals:[0,2,4,5,7,9,10],  group:'mode', modeNum:5 },
+  { id:'aeolian',    name:'Aiolyen',            nameEn:'Aeolian (Nat. Minor)',  intervals:[0,2,3,5,7,8,10],  group:'mode', modeNum:6 },
+  { id:'locrian',    name:'Lokriyen',           nameEn:'Locrian',              intervals:[0,1,3,5,6,8,10],  group:'mode', modeNum:7 },
+];
+
+// Major scale intervals for mode-parent calculation
+const MAJOR_INTERVALS = [0,2,4,5,7,9,11];
+
+// ══════════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════════
+
+let selNote    = 0;       // 0=C
+let selType    = 'major'; // triad type
+let selScaleId = 'major'; // scale/mode id
+let leftHand   = false;
+let activeTab  = 'triads';
+let scaleDisp  = 'notes'; // 'notes' | 'intervals'
+
+// ══════════════════════════════════════════════════════════════════
+// SVG HELPERS
+// ══════════════════════════════════════════════════════════════════
+
+function mkEl(tag, attrs) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  if (attrs) Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+  return el;
+}
+function mkLine(x1,y1,x2,y2,stroke,sw) {
+  return mkEl('line',{x1,y1,x2,y2,stroke,'stroke-width':sw||1});
+}
+function mkCircle(cx,cy,r,fill,stroke,sw) {
+  return mkEl('circle',{cx,cy,r,fill:fill||'none',stroke:stroke||'none','stroke-width':sw||1});
+}
+function mkRect(x,y,w,h,fill,rx) {
+  return mkEl('rect',{x,y,width:w,height:h,fill:fill||'none',rx:rx||0});
+}
+function mkText(x,y,txt,fill,size,anchor,weight) {
+  const el = mkEl('text',{
+    x,y,fill:fill||'#ccc','font-size':size||9,
+    'text-anchor':anchor||'middle','font-family':'system-ui,sans-serif',
+    'font-weight':weight||'normal','dominant-baseline':'middle'
+  });
+  el.textContent = txt;
+  return el;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// TRIAD SHAPES
+// ══════════════════════════════════════════════════════════════════
+
+function getTriadShapes(rootPc, type) {
+  const pcs = TRIAD_INTERVALS[type].map(i => (rootPc+i)%12);
+  const results = [];
+  for (let lowIdx=0; lowIdx<=3; lowIdx++) {
+    const group = [lowIdx, lowIdx+1, lowIdx+2];
+    for (let inv=0; inv<3; inv++) {
+      const bassNote = pcs[inv];
+      const o1 = pcs[(inv+1)%3], o2 = pcs[(inv+2)%3];
+      const r1 = (inv+1)%3,      r2 = (inv+2)%3;
+      const openPc = group.map(s => OPEN_MIDI[s]%12);
+      const bassFret = (bassNote - openPc[0] + 12) % 12;
+      const bassMidi = OPEN_MIDI[group[0]] + bassFret;
+      for (const [mn,hn,mr,hr] of [[o1,o2,r1,r2],[o2,o1,r2,r1]]) {
+        let mf = (mn-openPc[1]+12)%12;
+        while (OPEN_MIDI[group[1]]+mf < bassMidi) mf+=12;
+        const mm = OPEN_MIDI[group[1]]+mf;
+        let hf = (hn-openPc[2]+12)%12;
+        while (OPEN_MIDI[group[2]]+hf < mm) hf+=12;
+        const frets=[bassFret,mf,hf], roles=[inv,mr,hr];
+        const span = Math.max(...frets)-Math.min(...frets);
+        if (Math.max(...frets)<=15 && span<=4) {
+          const key = group.join(',')+' '+frets.join(',');
+          if (!results.find(r=>r.key===key))
+            results.push({group,frets,roles,inv,minFret:Math.min(...frets),key});
+        }
+      }
+    }
+  }
+  return results;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// CHORD BOX DIAGRAM (for triads)
+// ══════════════════════════════════════════════════════════════════
+
+const CB_W=104, CB_H=140, CB_ML=12, CB_MT=22, CB_MR=22, CB_MB=18;
+const CB_SLOTS=5;
+const CB_STR_SP = (CB_W-CB_ML-CB_MR)/5;
+const CB_FRT_SP = (CB_H-CB_MT-CB_MB)/CB_SLOTS;
+const CB_DOT_R  = 6;
+
+function drawChordBox(shape, isLH) {
+  const svg = mkEl('svg',{viewBox:`0 0 ${CB_W} ${CB_H}`,width:CB_W,height:CB_H});
+  const fbRight  = CB_ML + 5*CB_STR_SP;
+  const fbBottom = CB_MT + CB_SLOTS*CB_FRT_SP;
+  const showNut  = shape.minFret===0 || Math.max(...shape.frets)<=5;
+  const dStart   = showNut ? 1 : shape.minFret;
+
+  function sx(sIdx) { return CB_ML + (isLH ? 5-sIdx : sIdx)*CB_STR_SP; }
+  function sy(fret) { return CB_MT + (fret-dStart+0.5)*CB_FRT_SP; }
+
+  // Fret lines
+  for (let f=0; f<=CB_SLOTS; f++) {
+    const y = CB_MT + f*CB_FRT_SP;
+    const isNut = f===0 && showNut;
+    svg.appendChild(mkLine(CB_ML,y,fbRight,y, isNut?'#b0b0c0':'#252545', isNut?3:1));
+  }
+  // String lines
+  for (let s=0; s<6; s++) {
+    const x = sx(s);
+    const wi = STR_WIDTHS[isLH ? 5-s : s];
+    svg.appendChild(mkLine(x,CB_MT,x,fbBottom,'#303055',wi));
+  }
+  // Fret number
+  if (!showNut) {
+    svg.appendChild(mkText(fbRight+10, CB_MT+CB_FRT_SP*0.5+1, `${dStart}fr`,'#707090',8,'middle','600'));
+  }
+  // Mute/open markers
+  for (let s=0; s<6; s++) {
+    const x = sx(s), gi = shape.group.indexOf(s);
+    if (gi===-1) {
+      svg.appendChild(mkText(x,CB_MT-9,'✕','#303050',9,'middle','700'));
+    } else if (shape.frets[gi]===0 && showNut) {
+      svg.appendChild(mkCircle(x,CB_MT-9,4.5,'none',ROLE_COLORS[shape.roles[gi]],1.8));
+    }
+  }
+  // Fretted dots
+  shape.group.forEach((sIdx,i) => {
+    const fret = shape.frets[i], role=shape.roles[i], color=ROLE_COLORS[role];
+    if (fret===0 && showNut) return;
+    const x=sx(sIdx), y=sy(fret);
+    svg.appendChild(mkCircle(x+0.5,y+0.8,CB_DOT_R,'rgba(0,0,0,0.5)'));
+    svg.appendChild(mkCircle(x,y,CB_DOT_R,color));
+    svg.appendChild(mkText(x,y+0.5,ROLE_LABELS[role],'#fff',7.5,'middle','700'));
+  });
+  // String name labels
+  for (let s=0; s<6; s++) {
+    svg.appendChild(mkText(sx(s),fbBottom+10,STR_NAMES[isLH?5-s:s],'#383858',8));
+  }
+  return svg;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// FULL NECK DIAGRAM (for scales/modes)
+// ══════════════════════════════════════════════════════════════════
+
+// viewBox: 0 0 720 168
+// String order top→bottom: right-hand = e(5),B(4),G(3),D(2),A(1),E(0)
+//                           left-hand  = E(0),A(1),D(2),G(3),B(4),e(5)
+
+const NK_FRET_W  = 52;   // pixels per fret slot (in viewBox units)
+const NK_STR_SP  = 24;   // pixels between strings
+const NK_NUT_X   = 54;   // x of nut wire
+const NK_OPEN_X  = 36;   // x center of open-string dots
+const NK_TOP     = 28;   // top margin (fret numbers)
+const NK_BOT     = 20;   // bottom margin
+const NK_W       = NK_NUT_X + 12*NK_FRET_W + 16;  // 726
+const NK_H       = NK_TOP + 5*NK_STR_SP + NK_BOT; // 168
+
+function fretCenterX(fret) {
+  return fret === 0 ? NK_OPEN_X : NK_NUT_X + (fret-0.5)*NK_FRET_W;
+}
+function stringY(row) { return NK_TOP + row*NK_STR_SP; }
+
+function drawNeck(rootPc, scaleIntervals, isLH, showIntervals) {
+  const scalePcSet = new Set(scaleIntervals.map(i => (rootPc+i)%12));
+
+  // top-to-bottom string order
+  const strOrder = isLH ? [0,1,2,3,4,5] : [5,4,3,2,1,0];
+
+  const svg = document.getElementById('neckSvg');
+  svg.innerHTML = '';
+  svg.setAttribute('viewBox', `0 0 ${NK_W} ${NK_H}`);
+
+  // Fretboard background
+  svg.appendChild(mkRect(NK_NUT_X, NK_TOP, 12*NK_FRET_W, 5*NK_STR_SP, '#0c0c1e', 3));
+
+  // Inlay dots (fretboard position markers)
+  const singleInlays = [3,5,7,9];
+  const midY = NK_TOP + 2.5*NK_STR_SP;
+  singleInlays.forEach(f => {
+    svg.appendChild(mkCircle(fretCenterX(f), midY, 4, '#1a1a38'));
+  });
+  // Double dot at 12
+  const x12 = fretCenterX(12);
+  svg.appendChild(mkCircle(x12, midY - NK_STR_SP*0.75, 4, '#1a1a38'));
+  svg.appendChild(mkCircle(x12, midY + NK_STR_SP*0.75, 4, '#1a1a38'));
+
+  // Fret wires
+  for (let f=1; f<=12; f++) {
+    const x = NK_NUT_X + f*NK_FRET_W;
+    svg.appendChild(mkLine(x, NK_TOP, x, NK_TOP+5*NK_STR_SP, '#2a2a50', f===12?2:1));
+  }
+
+  // Nut
+  svg.appendChild(mkLine(NK_NUT_X, NK_TOP-2, NK_NUT_X, NK_TOP+5*NK_STR_SP+2, '#c0c0d0', 4));
+
+  // Fret numbers
+  [1,3,5,7,9,12].forEach(f => {
+    svg.appendChild(mkText(fretCenterX(f), NK_TOP-13, String(f), '#3a3a60', 9));
+  });
+
+  // Strings + notes
+  strOrder.forEach((sIdx, row) => {
+    const y = stringY(row);
+    // String line
+    svg.appendChild(mkLine(NK_OPEN_X-10, y, NK_W-6, y, '#282848', STR_WIDTHS[sIdx]));
+    // String name label (left side)
+    svg.appendChild(mkText(14, y, STR_NAMES[sIdx], '#464668', 10, 'middle', '600'));
+
+    // Notes fret 0..12
+    for (let fret=0; fret<=12; fret++) {
+      const pc = (OPEN_MIDI[sIdx] + fret) % 12;
+      if (!scalePcSet.has(pc)) continue;
+      const isRoot = pc === rootPc;
+      const x = fretCenterX(fret);
+      const r = isRoot ? 9.5 : 8;
+      const fill  = isRoot ? '#ff6b6b' : '#4a8fff';
+      const glow  = isRoot ? '#ff6b6b' : '#4a8fff';
+
+      // Glow
+      svg.appendChild(mkCircle(x, y, r+2, 'none', glow+'33', 2));
+      // Shadow
+      svg.appendChild(mkCircle(x+0.5, y+0.8, r, 'rgba(0,0,0,0.5)'));
+      // Fill
+      svg.appendChild(mkCircle(x, y, r, fill));
+
+      // Label
+      let label, fs;
+      if (showIntervals) {
+        const iv = (pc - rootPc + 12) % 12;
+        label = INTERVAL_LABEL[iv];
+        fs = label.length > 1 ? 6.5 : 8;
+      } else {
+        label = NOTE_DISPLAY[pc];
+        fs = label.length > 1 ? 5.8 : 8;
+      }
+      svg.appendChild(mkText(x, y+0.5, label, '#fff', fs, 'middle', '700'));
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════
+// SCALE INFO PANEL
+// ══════════════════════════════════════════════════════════════════
+
+function renderScaleInfo(scaleData, rootPc) {
+  const panel = document.getElementById('scaleInfoPanel');
+  panel.innerHTML = '';
+
+  const card = document.createElement('div');
+  card.className = 'scale-info';
+
+  // Degrees row
+  const degTitle = document.createElement('div');
+  degTitle.className = 'scale-info-title';
+  degTitle.textContent = 'Derece / Scale Degrees';
+  card.appendChild(degTitle);
+
+  const degRow = document.createElement('div');
+  degRow.className = 'scale-degrees';
+
+  const degreeNums = ['I','II','III','IV','V','VI','VII','VIII'];
+  scaleData.intervals.forEach((iv, idx) => {
+    const pc = (rootPc + iv) % 12;
+    const pill = document.createElement('div');
+    pill.className = 'degree-pill' + (iv===0 ? ' is-root' : '');
+
+    const numDiv = document.createElement('div');
+    numDiv.className = 'degree-num';
+    numDiv.textContent = degreeNums[idx] || (idx+1);
+
+    const noteDiv = document.createElement('div');
+    noteDiv.className = 'degree-note';
+    noteDiv.style.color = iv===0 ? '#ff6b6b' : '#c0c0e0';
+    noteDiv.textContent = NOTE_DISPLAY[pc];
+
+    const intDiv = document.createElement('div');
+    intDiv.className = 'degree-int';
+    intDiv.style.color = iv===0 ? '#ff6b6b88' : '#505070';
+    intDiv.textContent = INTERVAL_LABEL[iv];
+
+    pill.appendChild(numDiv);
+    pill.appendChild(noteDiv);
+    pill.appendChild(intDiv);
+    degRow.appendChild(pill);
+  });
+  card.appendChild(degRow);
+
+  // Formula
+  const formula = document.createElement('div');
+  formula.className = 'scale-formula';
+  const formulaHtml = scaleData.intervals
+    .map(iv => `<span>${INTERVAL_LABEL[iv]}</span>`)
+    .join(' &ndash; ');
+  formula.innerHTML = 'Formül: ' + formulaHtml;
+  card.appendChild(formula);
+
+  // Mode relationship
+  if (scaleData.modeNum && scaleData.modeNum > 1) {
+    const parentOffset = MAJOR_INTERVALS[scaleData.modeNum - 1];
+    const parentPc = (rootPc - parentOffset + 12) % 12;
+    const rel = document.createElement('div');
+    rel.className = 'mode-relation';
+    rel.innerHTML = `<strong>${NOTE_DISPLAY[rootPc]} ${scaleData.name}</strong>`
+      + ` = <strong>${NOTE_DISPLAY[parentPc]} Majör</strong>'ün `
+      + `<strong>${scaleData.modeNum}. modu</strong>`
+      + ` &mdash; ${NOTE_DISPLAY[parentPc]} majör gamı ${NOTE_DISPLAY[rootPc]}'dan başlatılır`;
+    card.appendChild(rel);
+  }
+
+  panel.appendChild(card);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// RENDER FUNCTIONS
+// ══════════════════════════════════════════════════════════════════
+
+function renderTriads() {
+  document.querySelectorAll('.note-btn').forEach((b,i) => b.classList.toggle('active', i===selNote));
+  document.querySelectorAll('[data-type]').forEach(b => b.classList.toggle('active', b.dataset.type===selType));
+
+  const root   = NOTE_DISPLAY[selNote];
+  const ivs    = TRIAD_INTERVALS[selType];
+  const notes  = ivs.map(i => NOTE_DISPLAY[(selNote+i)%12]);
+  const name   = root + TRIAD_SUFFIX[selType];
+
+  document.getElementById('chordBig').textContent = name;
+  document.getElementById('chordNotes').innerHTML =
+    notes.map((n,i) => `<span title="${['Kök','3.','5.'][i]}">${n}</span>`).join(' &ndash; ');
+
+  const allShapes = getTriadShapes(selNote, selType);
+  const content   = document.getElementById('triadContent');
+  content.innerHTML = '';
+
+  for (let g=0; g<=3; g++) {
+    const gs = allShapes.filter(s => s.group[0]===g);
+    const sec = document.createElement('div'); sec.className='section';
+
+    const hdr = document.createElement('div'); hdr.className='section-header';
+    hdr.innerHTML = `<div class="section-line"></div><div class="section-title">${GROUP_TITLES[g]}</div><div class="section-line"></div>`;
+    sec.appendChild(hdr);
+
+    const row = document.createElement('div'); row.className='shapes-row';
+
+    for (let inv=0; inv<3; inv++) {
+      const shape = gs.find(s => s.inv===inv);
+      const card  = document.createElement('div'); card.className='shape-card';
+      if (shape) {
+        card.appendChild(drawChordBox(shape, leftHand));
+        const invD = document.createElement('div'); invD.className='shape-inv';
+        invD.textContent = INV_NAMES[inv]; card.appendChild(invD);
+        const flD = document.createElement('div'); flD.className='shape-fretlabel';
+        flD.textContent = shape.frets.map((f,i) => {
+          const s=shape.group[i], nm=STR_NAMES[leftHand?5-s:s];
+          return `${nm}:${f===0?'O':f}`;
+        }).join('  ');
+        card.appendChild(flD);
+      } else {
+        const nd = document.createElement('div'); nd.className='no-shape';
+        nd.innerHTML = `<div style="font-size:1.3em;color:#20203a">&#8709;</div>${INV_NAMES[inv]}<br>mevcut değil`;
+        card.appendChild(nd);
+      }
+      row.appendChild(card);
+    }
+    sec.appendChild(row);
+    content.appendChild(sec);
+  }
+}
+
+function renderScale() {
+  document.querySelectorAll('.note-btn').forEach((b,i) => b.classList.toggle('active', i===selNote));
+  document.querySelectorAll('[data-scale]').forEach(b => b.classList.toggle('active', b.dataset.scale===selScaleId));
+
+  const sd = SCALE_DATA.find(s => s.id===selScaleId);
+  if (!sd) return;
+
+  const rootName = NOTE_DISPLAY[selNote];
+  document.getElementById('scaleBig').textContent = `${rootName} ${sd.name}`;
+  document.getElementById('scaleSub').textContent  = `${rootName} ${sd.nameEn}`;
+
+  const showIv = scaleDisp === 'intervals';
+  drawNeck(selNote, sd.intervals, leftHand, showIv);
+  renderScaleInfo(sd, selNote);
+}
+
+function updateAll() {
+  if (activeTab === 'triads') renderTriads();
+  else                         renderScale();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// UI INIT & EVENT HANDLERS
+// ══════════════════════════════════════════════════════════════════
+
+function buildNoteButtons() {
+  const c = document.getElementById('noteButtons');
+  NOTE_DISPLAY.forEach((name,i) => {
+    const b = document.createElement('button');
+    b.className = 'note-btn' + (name.includes('♯')?' sharp':'') + (i===selNote?' active':'');
+    b.textContent = name; b.title = name;
+    b.onclick = () => { selNote=i; updateAll(); };
+    c.appendChild(b);
+  });
+}
+
+function buildTypeButtons() {
+  const c = document.getElementById('typeButtons');
+  Object.entries(TRIAD_LABELS).forEach(([key,label]) => {
+    const b = document.createElement('button');
+    b.className = 'type-btn' + (key===selType?' active':'');
+    b.textContent = label; b.dataset.type = key;
+    b.onclick = () => { selType=key; renderTriads(); };
+    c.appendChild(b);
+  });
+}
+
+function buildScaleButtons() {
+  const scales = SCALE_DATA.filter(s=>s.group==='scale');
+  const modes  = SCALE_DATA.filter(s=>s.group==='mode');
+
+  function makeBtn(sd, container) {
+    const b = document.createElement('button');
+    b.className = 'scale-btn' + (sd.id===selScaleId?' active':'');
+    b.textContent = sd.name; b.dataset.scale = sd.id;
+    b.onclick = () => { selScaleId=sd.id; renderScale(); };
+    container.appendChild(b);
+  }
+  scales.forEach(sd => makeBtn(sd, document.getElementById('scaleButtons')));
+  modes.forEach(sd  => makeBtn(sd, document.getElementById('modeButtons')));
+}
+
+function toggleHand() {
+  leftHand = !leftHand;
+  document.getElementById('handToggle').classList.toggle('active', leftHand);
+  document.getElementById('handLabel').textContent = leftHand ? 'Sol El (Ayna)' : 'Sağ El (Standart)';
+  updateAll();
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.getElementById('panel-triads').style.display = tab==='triads' ? '' : 'none';
+  document.getElementById('panel-scales').style.display = tab==='scales' ? '' : 'none';
+  document.getElementById('tab-btn-triads').classList.toggle('active', tab==='triads');
+  document.getElementById('tab-btn-scales').classList.toggle('active', tab==='scales');
+  updateAll();
+}
+
+function setDisplay(mode) {
+  scaleDisp = mode;
+  document.querySelectorAll('[data-disp]').forEach(b => b.classList.toggle('active', b.dataset.disp===mode));
+  renderScale();
+}
+
+// ── Init ──────────────────────────────────────────────────────────
+buildNoteButtons();
+buildTypeButtons();
+buildScaleButtons();
+updateAll();
+</script>
+</body>
+</html>
