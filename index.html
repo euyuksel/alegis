@@ -935,13 +935,11 @@
 
   // ── Impressum content ──────────────────────
   const impressumHTML = `
-    <h2 class="text-xl font-bold text-brand-dark mb-4">Impressum</h2>
-
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Angaben gemäß § 5 TMG</h3>
-    <p>ALEGIS GmbH<br>Berliner Allee 32<br>40212 Düsseldorf<br>Deutschland</p>
+    <h3 class="font-semibold text-brand-dark mt-4 mb-1">Angaben gemäß § 5 TMG</h3>
+    <p>ALEGIS GmbH Steuerberatungsgesellschaft<br>Berliner Allee 32<br>40212 Düsseldorf<br>Deutschland</p>
 
     <h3 class="font-semibold text-brand-dark mt-5 mb-1">Kontakt</h3>
-    <p>Telefon: +49 211 959 897 0<br>Fax: +49 211 959897 99<br>E-Mail: infodus@alegis.de</p>
+    <p>Telefon: +49 211 959 897 0<br>E-Mail: infodus@alegis.de</p>
 
     <h3 class="font-semibold text-brand-dark mt-5 mb-1">Geschäftsführung</h3>
     <p>StB RA Sandra Behn<br>StB WP Michael Buder</p>
@@ -954,9 +952,9 @@
 
     <h3 class="font-semibold text-brand-dark mt-5 mb-1">Berufsrechtliche Angaben</h3>
     <p>
-      <strong>Sandra Behn</strong> — Rechtsanwältin und Steuerberaterin<br>
-      <strong>Michael Buder</strong> — Wirtschaftsprüfer und Steuerberater<br>
-      <strong>Dr. Alexandra Tröger</strong> — Steuerberaterin
+      <strong>Sandra Behn</strong> – Rechtsanwältin und Steuerberaterin<br>
+      <strong>Michael Buder</strong> – Wirtschaftsprüfer und Steuerberater<br>
+      <strong>Dr. Alexandra Tröger</strong> – Steuerberaterin
     </p>
     <p class="mt-2">Zuständige Aufsichtsbehörden:<br>
       Rechtsanwaltskammer Düsseldorf<br>
@@ -964,64 +962,102 @@
     </p>
 
     <h3 class="font-semibold text-brand-dark mt-5 mb-1">Berufshaftpflichtversicherung</h3>
-    <p>Zurich Insurance plc<br>Geltungsbereich: Weltweit; erfüllt die gesetzlichen Anforderungen gemäß den deutschen Berufsordnungen.</p>
+    <p>Zurich Insurance plc, Frankfurt am Main</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Streitschlichtung</h3>
-    <p>Die ALEGIS GmbH nimmt nicht an Verfahren zur alternativen Streitbeilegung vor einer Verbraucherschlichtungsstelle teil.</p>
+    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Verbraucherstreitbeilegung</h3>
+    <p>Die ALEGIS GmbH ist bereit, an Streitbeilegungsverfahren vor der Schlichtungsstelle der Rechtsanwaltschaft teilzunehmen. Im Übrigen nimmt die ALEGIS GmbH nicht an Verfahren zur alternativen Streitbeilegung vor einer Verbraucherschlichtungsstelle teil.</p>
+    <p class="mt-2">Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie unter <a href="https://ec.europa.eu/consumers/odr" class="text-brand-blue hover:underline" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a> finden.</p>
+
+    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Haftungsausschluss</h3>
+    <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
   `;
 
   // ── Datenschutz content ────────────────────
   const datenschutzHTML = `
-    <h2 class="text-xl font-bold text-brand-dark mb-4">Datenschutzerklärung</h2>
+    <p class="mb-4 text-gray-500">Informationen zum Datenschutz</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">1. Name und Kontaktdaten des Verantwortlichen</h3>
-    <p>ALEGIS GmbH<br>Berliner Allee 32, 40212 Düsseldorf<br>Telefon: +49 211 959 897 0 | Fax: +49 211 959897 99<br>E-Mail: infodus@alegis.de</p>
-    <p class="mt-2">Der Datenschutzbeauftragte ist unter den Unternehmensadressen mit dem Zusatz „zu Hd. Datenschutzbeauftragter" erreichbar.</p>
+    <h3 class="font-semibold text-brand-dark mt-4 mb-2">1. Name und Kontaktdaten des für die Verarbeitung Verantwortlichen sowie des betrieblichen Datenschutzbeauftragten</h3>
+    <p>Diese Datenschutz-Information gilt für die Datenverarbeitung durch die nachfolgenden Verantwortlichen:</p>
+    <p class="mt-2">ALEGIS GmbH<br>Steuerberatungsgesellschaft<br>Berliner Allee 32<br>40212 Düsseldorf<br>Deutschland<br>Telefon: +49 211 959 897 0<br>Telefax: +49 211 959897 99<br>E-Mail: infodus@alegis.de</p>
+    <p class="mt-2">Der betriebliche Datenschutzbeauftragte von allen oben genannten Gesellschaften ist unter den jeweiligen Anschriften, zu Hd. Datenschutzbeauftragter erreichbar.</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">2. Erhebung und Speicherung personenbezogener Daten</h3>
-    <h4 class="font-medium mt-3 mb-1">a) Website-Besuche</h4>
-    <p>Bei jedem Aufruf unserer Website werden automatisch folgende Informationen erhoben: IP-Adresse des anfragenden Rechners, Datum und Uhrzeit des Zugriffs, Name und URL der abgerufenen Datei. Die Verarbeitung erfolgt auf Basis von Art. 6 Abs. 1 lit. f DSGVO (berechtigte Interessen) zur Sicherstellung einer reibungslosen Verbindung und der Systemsicherheit.</p>
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">2. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung</h3>
 
-    <h4 class="font-medium mt-3 mb-1">b) Kontaktformular</h4>
-    <p>Bei Nutzung des Kontaktformulars ist die Angabe der E-Mail-Adresse erforderlich; weitere Angaben sind freiwillig. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO. Die Daten werden nach Erledigung der Anfrage automatisch gelöscht.</p>
+    <h4 class="font-medium text-brand-dark mt-3 mb-1">a) Beim Besuch der Website</h4>
+    <p>Beim Aufrufen unserer Website www.alegis.de werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sog. Logfile gespeichert. Folgende Informationen werden dabei ohne Ihr Zutun erfasst und bis zur automatisierten Löschung gespeichert:</p>
+    <ol class="list-decimal pl-5 mt-2 space-y-1">
+      <li>IP-Adresse des anfragenden Rechners,</li>
+      <li>Datum und Uhrzeit des Zugriffs,</li>
+      <li>Name und URL der abgerufenen Datei,</li>
+      <li>Website, von der aus der Zugriff erfolgt (Referrer-URL),</li>
+      <li>verwendeter Browser und ggf. das Betriebssystem Ihres Rechners sowie der Name Ihres Access-Providers.</li>
+    </ol>
+    <p class="mt-2">Die genannten Daten werden durch uns zu folgenden Zwecken verarbeitet:</p>
+    <ol class="list-decimal pl-5 mt-2 space-y-1">
+      <li>Gewährleistung eines reibungslosen Verbindungsaufbaus der Website,</li>
+      <li>Gewährleistung einer komfortablen Nutzung unserer Website,</li>
+      <li>Auswertung der Systemsicherheit und -stabilität sowie</li>
+      <li>zu weiteren administrativen Zwecken.</li>
+    </ol>
+    <p class="mt-2">Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 S. 1 lit. f DSGVO. Unser berechtigtes Interesse folgt aus oben aufgelisteten Zwecken zur Datenerhebung. In keinem Fall verwenden wir die erhobenen Daten zu dem Zweck, Rückschlüsse auf Ihre Person zu ziehen.</p>
 
-    <h4 class="font-medium mt-3 mb-1">c) Bewerbungsverfahren</h4>
-    <p>Personenbezogene Daten werden ausschließlich für Rekrutierungszwecke und zur Einhaltung des Allgemeinen Gleichbehandlungsgesetzes verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO, § 26 BDSG (neu) bzw. Art. 6 Abs. 1 lit. a DSGVO.</p>
-    <p class="mt-1"><em>Aufbewahrung:</em> Bei Einstellung gemäß arbeitsrechtlichen Vorgaben; bei Ablehnung Löschung sechs Monate nach Absage. Widerspruch jederzeit möglich unter: karriere@alegis.de.</p>
+    <h4 class="font-medium text-brand-dark mt-4 mb-1">b) Bei Nutzung unseres Kontaktformulars</h4>
+    <p>Bei Fragen jeglicher Art bieten wir Ihnen die Möglichkeit, mit uns über ein auf der Website bereitgestelltes Formular Kontakt aufzunehmen. Dabei ist die Angabe einer gültigen E-Mail-Adresse erforderlich, damit wir wissen, von wem die Anfrage stammt und um diese beantworten zu können. Weitere Angaben können freiwillig getätigt werden.</p>
+    <p class="mt-2">Die Datenverarbeitung zum Zwecke der Kontaktaufnahme mit uns erfolgt nach Art. 6 Abs. 1 S. 1 lit. a DSGVO auf Grundlage Ihrer freiwillig erteilten Einwilligung. Die für die Benutzung des Kontaktformulars von uns erhobenen personenbezogenen Daten werden nach Erledigung der von Ihnen gestellten Anfrage automatisch gelöscht.</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">3. Datenweitergabe</h3>
-    <p>Eine Weitergabe personenbezogener Daten an Dritte erfolgt nur bei ausdrücklicher Einwilligung (Art. 6 Abs. 1 lit. a), zur Geltendmachung von Ansprüchen (lit. f), bei gesetzlicher Verpflichtung (lit. c) oder zur Vertragserfüllung (lit. b).</p>
+    <h4 class="font-medium text-brand-dark mt-4 mb-1">c) Bewerbungsverfahren</h4>
+    <p>Wir erheben und verarbeiten personenbezogene Daten von Ihnen ausschließlich zum Zwecke der Abwicklung des Bewerbungsverfahrens sowie ggf. zum Nachweis der diskriminierungsfreien Stellenbesetzung im Rahmen des Gleichbehandlungsgesetzes. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 Satz 1 lit b) DSGVO, § 26 BDSG (neu) bzw. im Falle der Einwilligung Art. 6 Abs. 1 Satz 1 lit. A), Art. 7 DSGVO.</p>
+    <p class="mt-2">Uns ist es wichtig, einen höchstmöglichen Schutz Ihrer persönlichen Daten zu gewährleisten. Alle persönlichen Daten, die im Rahmen einer Bewerbung bei uns erhoben und verarbeitet werden, sind durch technische und organisatorische Maßnahmen gegen unberechtigte Zugriffe und Manipulation geschützt.</p>
+    <p class="mt-2">Schließen wir keinen Anstellungsvertrag mit Ihnen, so werden die Bewerbungsunterlagen sechs Monate nach Bekanntgabe der Absageentscheidung automatisch gelöscht, sofern einer Löschung keine sonstigen berechtigten Interessen entgegenstehen.</p>
+    <p class="mt-2">Eine Übermittlung an Dritte im Sinne des Bundesdatenschutzgesetzes findet nicht statt. Sie können jederzeit der Verarbeitung oder Nutzung Ihrer Daten an <a href="mailto:karriere@alegis.de" class="text-brand-blue hover:underline">karriere@alegis.de</a> mit Wirkung für die Zukunft widersprechen.</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">4. Cookies</h3>
-    <p>Unsere Website verwendet Session-Cookies (werden beim Verlassen gelöscht), temporäre Cookies (speichern Nutzerpräferenzen) sowie Analyse-Cookies (statistische Nutzungsmessung). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Die Cookie-Speicherung kann in Ihrem Browser deaktiviert werden.</p>
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">3. Weitergabe von Daten</h3>
+    <p>Eine Übermittlung Ihrer persönlichen Daten an Dritte zu anderen als den im Folgenden aufgeführten Zwecken findet nicht statt. Wir geben Ihre persönlichen Daten nur an Dritte weiter, wenn:</p>
+    <ol class="list-decimal pl-5 mt-2 space-y-1">
+      <li>Sie Ihre nach Art. 6 Abs. 1 S. 1 lit. a DSGVO ausdrückliche Einwilligung dazu erteilt haben,</li>
+      <li>die Weitergabe nach Art. 6 Abs. 1 S. 1 lit. f DSGVO zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen erforderlich ist,</li>
+      <li>für den Fall, dass für die Weitergabe nach Art. 6 Abs. 1 S. 1 lit. c DSGVO eine gesetzliche Verpflichtung besteht, sowie</li>
+      <li>dies gesetzlich zulässig und nach Art. 6 Abs. 1 S. 1 lit. b DSGVO für die Abwicklung von Vertragsverhältnissen mit Ihnen erforderlich ist.</li>
+    </ol>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">5. Analysetools</h3>
-    <h4 class="font-medium mt-3 mb-1">a) Google Analytics</h4>
-    <p>Wir nutzen Google Analytics (Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Erhoben werden Browser-Typ, Betriebssystem, Referrer-URL, Hostname und Serveranfragen-Zeitpunkt. IP-Adressen werden anonymisiert. Opt-out: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" class="text-brand-blue hover:underline" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a></p>
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">4. Cookies</h3>
+    <p>Wir setzen auf unserer Seite Cookies ein. Hierbei handelt es sich um kleine Dateien, die Ihr Browser automatisch erstellt und die auf Ihrem Endgerät gespeichert werden, wenn Sie unsere Seite besuchen. Cookies richten auf Ihrem Endgerät keinen Schaden an, enthalten keine Viren, Trojaner oder sonstige Schadsoftware.</p>
+    <p class="mt-2">Der Einsatz von Cookies dient einerseits dazu, die Nutzung unseres Angebots für Sie angenehmer zu gestalten. So setzen wir sogenannte Session-Cookies ein, um zu erkennen, dass Sie einzelne Seiten unserer Website bereits besucht haben. Diese werden nach Verlassen unserer Seite automatisch gelöscht. Darüber hinaus setzen wir ebenfalls zur Optimierung der Benutzerfreundlichkeit temporäre Cookies ein. Zum anderen setzen wir Cookies ein, um die Nutzung unserer Website statistisch zu erfassen und zum Zwecke der Optimierung unseres Angebotes für Sie auszuwerten (siehe Ziff. 5).</p>
+    <p class="mt-2">Die durch Cookies verarbeiteten Daten sind für die genannten Zwecke zur Wahrung unserer berechtigten Interessen sowie der Dritter nach Art. 6 Abs. 1 S. 1 lit. f DSGVO erforderlich. Die meisten Browser akzeptieren Cookies automatisch. Sie können Ihren Browser jedoch so konfigurieren, dass keine Cookies auf Ihrem Computer gespeichert werden.</p>
 
-    <h4 class="font-medium mt-3 mb-1">b) Google Adwords Conversion Tracking</h4>
-    <p>Bei Besuchen über Google-Anzeigen wird ein Cookie gesetzt (Gültigkeit: 30 Tage). Dieses dient ausschließlich der Konversionsstatistik ohne Personenidentifikation. Opt-out über Browser-Einstellungen oder Deaktivierung der Domain „www.googleadservices.com".</p>
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">5. Analyse-Tools</h3>
+    <p>Die im Folgenden aufgeführten und von uns eingesetzten Tracking-Maßnahmen werden auf Grundlage des Art. 6 Abs. 1 S. 1 lit. f DSGVO durchgeführt. Mit den zum Einsatz kommenden Tracking-Maßnahmen wollen wir eine bedarfsgerechte Gestaltung und die fortlaufende Optimierung unserer Webseite sicherstellen.</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">6. Betroffenenrechte</h3>
-    <p>Sie haben das Recht auf:</p>
-    <ul class="list-disc pl-5 mt-2 space-y-1">
-      <li><strong>Auskunft</strong> (Art. 15 DSGVO, § 34 BDSG)</li>
-      <li><strong>Berichtigung</strong> (Art. 16 DSGVO)</li>
-      <li><strong>Löschung</strong> (Art. 17 DSGVO)</li>
-      <li><strong>Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO)</li>
-      <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
-      <li><strong>Widerruf einer Einwilligung</strong> (Art. 7 Abs. 3 DSGVO)</li>
-      <li><strong>Beschwerde</strong> bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
-    </ul>
+    <h4 class="font-medium text-brand-dark mt-3 mb-1">a) Google Analytics</h4>
+    <p>Zum Zwecke der bedarfsgerechten Gestaltung und fortlaufenden Optimierung unserer Seiten nutzen wir Google Analytics, ein Webanalysedienst der Google Inc. (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). In diesem Zusammenhang werden pseudonymisierte Nutzungsprofile erstellt und Cookies verwendet. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website werden an einen Server von Google in den USA übertragen und dort gespeichert. Die IP-Adressen werden anonymisiert, so dass eine Zuordnung nicht möglich ist (IP-Masking).</p>
+    <p class="mt-2">Sie können die Erfassung durch Google Analytics verhindern, indem Sie ein Browser-Add-on herunterladen und installieren: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" class="text-brand-blue hover:underline" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>. Weitere Informationen: <a href="https://support.google.com/analytics/answer/6004245?hl=de" class="text-brand-blue hover:underline" target="_blank" rel="noopener">support.google.com/analytics</a></p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">7. Widerspruchsrecht</h3>
-    <p>Bei Verarbeitungen auf Basis von Art. 6 Abs. 1 lit. f DSGVO haben Sie das Recht auf Widerspruch gemäß Art. 21 DSGVO. Bei Direktwerbung ist kein Widerspruchsgrund erforderlich.</p>
+    <h4 class="font-medium text-brand-dark mt-4 mb-1">b) Google Adwords Conversion Tracking</h4>
+    <p>Um die Nutzung unserer Webseite statistisch zu erfassen, nutzen wir ferner das Google Conversion Tracking. Dabei wird von Google Adwords ein Cookie auf Ihrem Rechner gesetzt, sofern Sie über eine Google-Anzeige auf unsere Webseite gelangt sind. Diese Cookies verlieren nach 30 Tagen ihre Gültigkeit und dienen nicht der persönlichen Identifizierung. Googles Datenschutzbelehrung zum Conversion-Tracking: <a href="https://services.google.com/sitestats/de.html" class="text-brand-blue hover:underline" target="_blank" rel="noopener">services.google.com/sitestats/de.html</a></p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">8. Datensicherheit</h3>
-    <p>Die Datenübertragung auf unserer Website erfolgt mittels SSL-Verschlüsselung (128-Bit, v3). Verschlüsselte Seiten erkennen Sie an dem geschlossenen Schloss- bzw. Schlüsselsymbol in der Statusleiste Ihres Browsers.</p>
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">7. Eingebundene Dienste und Drittanbieter</h3>
+    <p>Wir nutzen auf unserer Website durch Drittanbieter bereitgestellte Dienste, Services und Inhalte. Für eine solche Einbindung ist eine Verarbeitung Ihrer IP-Adresse technisch notwendig, damit die Inhalte an Ihren Browser gesendet werden können. Diese Datenverarbeitungen erfolgen jeweils zur Wahrung unserer berechtigten Interessen und beruhen auf der Rechtsgrundlage des Art. 6 Abs. 1 Satz 1 f) DSGVO.</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">9. Aktualität dieser Datenschutzerklärung</h3>
-    <p>Diese Datenschutzerklärung ist aktuell gültig. Durch die Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann eine Anpassung notwendig werden. Stand: Mai 2018.</p>
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">8. Betroffenenrechte</h3>
+    <p>Sie haben das Recht:</p>
+    <ol class="list-decimal pl-5 mt-2 space-y-2">
+      <li>gemäß Art. 15 DSGVO und § 34 BDSG <strong>Auskunft</strong> über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen;</li>
+      <li>gemäß Art. 16 DSGVO die <strong>Berichtigung</strong> unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen;</li>
+      <li>gemäß Art. 17 DSGVO die <strong>Löschung</strong> Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen;</li>
+      <li>gemäß Art. 18 DSGVO die <strong>Einschränkung der Verarbeitung</strong> Ihrer personenbezogenen Daten zu verlangen;</li>
+      <li>gemäß Art. 20 DSGVO Ihre personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten (<strong>Datenübertragbarkeit</strong>);</li>
+      <li>gemäß Art. 7 Abs. 3 DSGVO Ihre einmal erteilte <strong>Einwilligung jederzeit zu widerrufen</strong>;</li>
+      <li>gemäß Art. 77 DSGVO sich bei einer <strong>Aufsichtsbehörde zu beschweren</strong>.</li>
+    </ol>
+
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">9. Widerspruchsrecht</h3>
+    <p>Sofern Ihre personenbezogenen Daten auf Grundlage von berechtigten Interessen gemäß Art. 6 Abs. 1 S. 1 lit. f DSGVO verarbeitet werden, haben Sie das Recht, gemäß Art. 21 DSGVO Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten einzulegen, soweit dafür Gründe vorliegen, die sich aus Ihrer besonderen Situation ergeben oder sich der Widerspruch gegen Direktwerbung richtet. Im letzteren Fall haben Sie ein generelles Widerspruchsrecht, das ohne Angabe einer besonderen Situation von uns umgesetzt wird.</p>
+
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">10. Datensicherheit</h3>
+    <p>Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket Layer) und greifen dabei auf eine 128-Bit v3 Technologie zurück. Ob eine einzelne Seite unseres Internetauftrittes verschlüsselt übertragen wird, erkennen Sie an der geschlossenen Darstellung des Schüssel- beziehungsweise Schloss-Symbols in der unteren Statusleiste Ihres Browsers.</p>
+
+    <h3 class="font-semibold text-brand-dark mt-5 mb-2">11. Aktualität und Änderung dieser Datenschutzerklärung</h3>
+    <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 24. Mai 2018. Durch die Weiterentwicklung unserer Website und Angebote darüber oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf der Website von Ihnen abgerufen und ausgedruckt werden.</p>
   `;
 </script>
 
