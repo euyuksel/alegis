@@ -86,15 +86,20 @@
 
     <!-- Desktop links -->
     <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-white/90">
-      <li><a href="#leistungen" class="nav-link hover:text-white transition-colors">Leistungen</a></li>
-      <li><a href="#team"       class="nav-link hover:text-white transition-colors">Team</a></li>
-      <li><a href="#standorte" class="nav-link hover:text-white transition-colors">Standorte</a></li>
-      <li><a href="#karriere"  class="nav-link hover:text-white transition-colors">Karriere</a></li>
-      <li><a href="#kontakt"   class="nav-link hover:text-white transition-colors">Kontakt</a></li>
+      <li><a href="#leistungen" class="nav-link hover:text-white transition-colors" data-i18n="nav.services">Leistungen</a></li>
+      <li><a href="#team"       class="nav-link hover:text-white transition-colors" data-i18n="nav.team">Team</a></li>
+      <li><a href="#standorte"  class="nav-link hover:text-white transition-colors" data-i18n="nav.locations">Standorte</a></li>
+      <li><a href="#karriere"   class="nav-link hover:text-white transition-colors" data-i18n="nav.career">Karriere</a></li>
+      <li><a href="#kontakt"    class="nav-link hover:text-white transition-colors" data-i18n="nav.contact">Kontakt</a></li>
       <li>
-        <a href="#kontakt" class="ml-2 px-4 py-2 rounded-full border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-dark font-semibold transition-all text-xs">
+        <a href="#kontakt" class="ml-2 px-4 py-2 rounded-full border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-dark font-semibold transition-all text-xs" data-i18n="nav.cta">
           Beratung anfragen
         </a>
+      </li>
+      <li class="flex items-center gap-1 ml-2 text-xs font-bold">
+        <button onclick="setLang('de')" class="lang-btn px-2 py-1 rounded transition-colors" data-lang="de">DE</button>
+        <span class="text-white/30">|</span>
+        <button onclick="setLang('en')" class="lang-btn px-2 py-1 rounded transition-colors opacity-40" data-lang="en">EN</button>
       </li>
     </ul>
 
@@ -112,11 +117,15 @@
   <!-- Mobile menu -->
   <div id="mobileMenu" class="md:hidden bg-brand-navy/95 backdrop-blur-sm px-6 pb-4">
     <ul class="flex flex-col gap-3 text-white text-sm font-medium pt-2">
-      <li><a href="#leistungen" class="mobile-link block py-1">Leistungen</a></li>
-      <li><a href="#team"       class="mobile-link block py-1">Team</a></li>
-      <li><a href="#standorte" class="mobile-link block py-1">Standorte</a></li>
-      <li><a href="#karriere"  class="mobile-link block py-1">Karriere</a></li>
-      <li><a href="#kontakt"   class="mobile-link block py-1">Kontakt</a></li>
+      <li><a href="#leistungen" class="mobile-link block py-1" data-i18n="nav.services">Leistungen</a></li>
+      <li><a href="#team"       class="mobile-link block py-1" data-i18n="nav.team">Team</a></li>
+      <li><a href="#standorte"  class="mobile-link block py-1" data-i18n="nav.locations">Standorte</a></li>
+      <li><a href="#karriere"   class="mobile-link block py-1" data-i18n="nav.career">Karriere</a></li>
+      <li><a href="#kontakt"    class="mobile-link block py-1" data-i18n="nav.contact">Kontakt</a></li>
+      <li class="flex gap-2 pt-1">
+        <button onclick="setLang('de')" class="lang-btn text-xs font-bold px-2 py-1 rounded" data-lang="de">DE</button>
+        <button onclick="setLang('en')" class="lang-btn text-xs font-bold px-2 py-1 rounded opacity-40" data-lang="en">EN</button>
+      </li>
     </ul>
   </div>
 </header>
@@ -150,15 +159,15 @@
       <h1 class="hero-title text-5xl lg:text-6xl font-extrabold leading-tight text-white mb-6">
         <span>Business.<br/>Relevance.</span>
       </h1>
-      <p class="text-white/70 text-lg leading-relaxed max-w-md mb-10">
+      <p class="text-white/70 text-lg leading-relaxed max-w-md mb-10" data-i18n="hero.sub">
         Kompetenz, die sich auszahlt — professionelle Steuerberatung und Wirtschaftsprüfung für Unternehmen mit internationaler Perspektive.
       </p>
 
       <div class="flex flex-wrap gap-4">
-        <a href="#leistungen" class="px-7 py-3.5 bg-brand-accent text-brand-dark font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-lg shadow-brand-accent/30">
+        <a href="#leistungen" class="px-7 py-3.5 bg-brand-accent text-brand-dark font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-lg shadow-brand-accent/30" data-i18n="hero.btn1">
           Unsere Leistungen
         </a>
-        <a href="#kontakt" class="px-7 py-3.5 border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-colors">
+        <a href="#kontakt" class="px-7 py-3.5 border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-colors" data-i18n="hero.btn2">
           Kontakt aufnehmen
         </a>
       </div>
@@ -168,19 +177,19 @@
     <div class="hidden lg:grid grid-cols-2 gap-5">
       <div class="bg-white/5 border border-white/10 rounded-2xl p-7 card-lift backdrop-blur-sm">
         <div class="text-brand-accent text-4xl font-extrabold mb-1">25+</div>
-        <div class="text-white/60 text-sm">Jahre Erfahrung</div>
+        <div class="text-white/60 text-sm" data-i18n="hero.stat1">Jahre Erfahrung</div>
       </div>
       <div class="bg-white/5 border border-white/10 rounded-2xl p-7 card-lift backdrop-blur-sm mt-8">
         <div class="text-brand-accent text-4xl font-extrabold mb-1">2</div>
-        <div class="text-white/60 text-sm">Standorte in NRW</div>
+        <div class="text-white/60 text-sm" data-i18n="hero.stat2">Standorte in NRW</div>
       </div>
       <div class="bg-white/5 border border-white/10 rounded-2xl p-7 card-lift backdrop-blur-sm -mt-4">
         <div class="text-brand-accent text-4xl font-extrabold mb-1">100%</div>
-        <div class="text-white/60 text-sm">Mandantenfokus</div>
+        <div class="text-white/60 text-sm" data-i18n="hero.stat3">Mandantenfokus</div>
       </div>
       <div class="bg-white/5 border border-white/10 rounded-2xl p-7 card-lift backdrop-blur-sm mt-4">
         <div class="text-brand-accent text-4xl font-extrabold mb-1">Int'l</div>
-        <div class="text-white/60 text-sm">Ausrichtung</div>
+        <div class="text-white/60 text-sm" data-i18n="hero.stat4">Ausrichtung</div>
       </div>
     </div>
   </div>
@@ -201,9 +210,9 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16 reveal">
-      <span class="text-brand-blue text-xs font-bold tracking-widest uppercase">Was wir bieten</span>
-      <h2 class="text-4xl font-extrabold text-brand-dark mt-3">Unsere Leistungen</h2>
-      <p class="text-gray-500 mt-4 max-w-xl mx-auto">Maßgeschneiderte Lösungen für Unternehmen jeder Größe — von der laufenden Steuerberatung bis zur internationalen Strukturierung.</p>
+      <span class="text-brand-blue text-xs font-bold tracking-widest uppercase" data-i18n="sv.badge">Was wir bieten</span>
+      <h2 class="text-4xl font-extrabold text-brand-dark mt-3" data-i18n="sv.title">Unsere Leistungen</h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto" data-i18n="sv.sub">Maßgeschneiderte Lösungen für Unternehmen jeder Größe — von der laufenden Steuerberatung bis zur internationalen Strukturierung.</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -215,8 +224,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-brand-dark mb-2">Steuerberatung</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Umfassende Beratung in allen steuerlichen Angelegenheiten für Unternehmen, Freiberufler und Privatpersonen.</p>
+        <h3 class="text-lg font-bold text-brand-dark mb-2" data-i18n="sv1.t">Steuerberatung</h3>
+        <p class="text-gray-500 text-sm leading-relaxed" data-i18n="sv1.d">Umfassende Beratung in allen steuerlichen Angelegenheiten für Unternehmen, Freiberufler und Privatpersonen.</p>
       </div>
 
       <!-- Card 2 -->
@@ -226,8 +235,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-brand-dark mb-2">Wirtschaftsprüfung</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Jahresabschlussprüfungen, Sonderprüfungen und prüfungsnahe Beratungsleistungen nach nationalen und internationalen Standards.</p>
+        <h3 class="text-lg font-bold text-brand-dark mb-2" data-i18n="sv2.t">Wirtschaftsprüfung</h3>
+        <p class="text-gray-500 text-sm leading-relaxed" data-i18n="sv2.d">Jahresabschlussprüfungen, Sonderprüfungen und prüfungsnahe Beratungsleistungen nach nationalen und internationalen Standards.</p>
       </div>
 
       <!-- Card 3 -->
@@ -237,8 +246,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-brand-dark mb-2">Rechtsberatung</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Rechtliche Begleitung bei Unternehmensgründungen, Umstrukturierungen und Vertragsgestaltungen.</p>
+        <h3 class="text-lg font-bold text-brand-dark mb-2" data-i18n="sv3.t">Rechtsberatung</h3>
+        <p class="text-gray-500 text-sm leading-relaxed" data-i18n="sv3.d">Rechtliche Begleitung bei Unternehmensgründungen, Umstrukturierungen und Vertragsgestaltungen.</p>
       </div>
 
       <!-- Card 4 -->
@@ -248,8 +257,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-brand-dark mb-2">Internationales Steuerrecht</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Grenzüberschreitende Steuerplanung, Verrechnungspreise und Beratung bei Auslandsaktivitäten.</p>
+        <h3 class="text-lg font-bold text-brand-dark mb-2" data-i18n="sv4.t">Internationales Steuerrecht</h3>
+        <p class="text-gray-500 text-sm leading-relaxed" data-i18n="sv4.d">Grenzüberschreitende Steuerplanung, Verrechnungspreise und Beratung bei Auslandsaktivitäten.</p>
       </div>
 
       <!-- Card 5 -->
@@ -259,8 +268,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-brand-dark mb-2">Lohnbuchhaltung & HR</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Lohn- und Gehaltsabrechnung, Sozialversicherungsberatung und arbeitsrechtliche Unterstützung.</p>
+        <h3 class="text-lg font-bold text-brand-dark mb-2" data-i18n="sv5.t">Lohnbuchhaltung & HR</h3>
+        <p class="text-gray-500 text-sm leading-relaxed" data-i18n="sv5.d">Lohn- und Gehaltsabrechnung, Sozialversicherungsberatung und arbeitsrechtliche Unterstützung.</p>
       </div>
 
       <!-- Card 6 -->
@@ -270,8 +279,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
         </div>
-        <h3 class="text-lg font-bold text-brand-dark mb-2">Buchführung & Abschlüsse</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Finanzbuchhaltung, Jahresabschlüsse nach HGB sowie betriebswirtschaftliche Auswertungen.</p>
+        <h3 class="text-lg font-bold text-brand-dark mb-2" data-i18n="sv6.t">Buchführung & Abschlüsse</h3>
+        <p class="text-gray-500 text-sm leading-relaxed" data-i18n="sv6.d">Finanzbuchhaltung, Jahresabschlüsse nach HGB sowie betriebswirtschaftliche Auswertungen.</p>
       </div>
 
     </div>
@@ -286,9 +295,9 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16 reveal">
-      <span class="text-brand-blue text-xs font-bold tracking-widest uppercase">Unsere Experten</span>
-      <h2 class="text-4xl font-extrabold text-brand-dark mt-3">Das Team</h2>
-      <p class="text-gray-500 mt-4 max-w-xl mx-auto">Erfahrene Fachleute mit tiefem Verständnis für Ihre steuerlichen und wirtschaftlichen Herausforderungen.</p>
+      <span class="text-brand-blue text-xs font-bold tracking-widest uppercase" data-i18n="tm.badge">Unsere Experten</span>
+      <h2 class="text-4xl font-extrabold text-brand-dark mt-3" data-i18n="tm.title">Das Team</h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto" data-i18n="tm.sub">Erfahrene Fachleute mit tiefem Verständnis für Ihre steuerlichen und wirtschaftlichen Herausforderungen.</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -302,9 +311,9 @@
         </div>
         <div class="pt-12 pb-8 px-6">
           <h3 class="text-lg font-bold text-brand-dark">Sandra-E. Behn</h3>
-          <p class="text-brand-blue text-sm font-medium mt-1">Steuerberaterin · Rechtsanwältin</p>
-          <p class="text-gray-500 text-sm mt-3 leading-relaxed">Spezialisiert auf Unternehmenssteuerrecht und grenzüberschreitende Transaktionen mit besonderem Fokus auf den Mittelstand.</p>
-          <a href="#kontakt" class="inline-block mt-5 text-brand-blue text-sm font-semibold hover:text-brand-accent transition-colors">
+          <p class="text-brand-blue text-sm font-medium mt-1" data-i18n="tm1.role">Steuerberaterin · Rechtsanwältin</p>
+          <p class="text-gray-500 text-sm mt-3 leading-relaxed" data-i18n="tm1.desc">Spezialisiert auf Unternehmenssteuerrecht und grenzüberschreitende Transaktionen mit besonderem Fokus auf den Mittelstand.</p>
+          <a href="#kontakt" class="inline-block mt-5 text-brand-blue text-sm font-semibold hover:text-brand-accent transition-colors" data-i18n="tm1.cta">
             Kontakt aufnehmen →
           </a>
         </div>
@@ -319,9 +328,9 @@
         </div>
         <div class="pt-12 pb-8 px-6">
           <h3 class="text-lg font-bold text-brand-dark">Michael Buder</h3>
-          <p class="text-brand-blue text-sm font-medium mt-1">Wirtschaftsprüfer · Steuerberater</p>
-          <p class="text-gray-500 text-sm mt-3 leading-relaxed">Jahrelange Erfahrung in der Jahresabschlussprüfung, Due-Diligence-Prüfungen und der betriebswirtschaftlichen Beratung.</p>
-          <a href="#kontakt" class="inline-block mt-5 text-brand-blue text-sm font-semibold hover:text-brand-accent transition-colors">
+          <p class="text-brand-blue text-sm font-medium mt-1" data-i18n="tm2.role">Wirtschaftsprüfer · Steuerberater</p>
+          <p class="text-gray-500 text-sm mt-3 leading-relaxed" data-i18n="tm2.desc">Jahrelange Erfahrung in der Jahresabschlussprüfung, Due-Diligence-Prüfungen und der betriebswirtschaftlichen Beratung.</p>
+          <a href="#kontakt" class="inline-block mt-5 text-brand-blue text-sm font-semibold hover:text-brand-accent transition-colors" data-i18n="tm2.cta">
             Kontakt aufnehmen →
           </a>
         </div>
@@ -334,9 +343,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
           </svg>
         </div>
-        <h3 class="text-white font-bold text-lg mb-2">Werden Sie Teil des Teams</h3>
-        <p class="text-white/50 text-sm leading-relaxed mb-5">Wir wachsen — entdecken Sie offene Stellen und gestalten Sie Ihre Karriere bei ALEGIS.</p>
-        <a href="#karriere" class="px-5 py-2.5 bg-brand-accent text-brand-dark font-bold text-sm rounded-full hover:bg-yellow-400 transition-colors">
+        <h3 class="text-white font-bold text-lg mb-2" data-i18n="tm.join.t">Werden Sie Teil des Teams</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-5" data-i18n="tm.join.d">Wir wachsen — entdecken Sie offene Stellen und gestalten Sie Ihre Karriere bei ALEGIS.</p>
+        <a href="#karriere" class="px-5 py-2.5 bg-brand-accent text-brand-dark font-bold text-sm rounded-full hover:bg-yellow-400 transition-colors" data-i18n="tm.join.btn">
           Jetzt bewerben
         </a>
       </div>
@@ -353,8 +362,8 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16 reveal">
-      <span class="text-brand-blue text-xs font-bold tracking-widest uppercase">Am richtigen Ort</span>
-      <h2 class="text-4xl font-extrabold text-brand-dark mt-3">Unsere Standorte</h2>
+      <span class="text-brand-blue text-xs font-bold tracking-widest uppercase" data-i18n="loc.badge">Am richtigen Ort</span>
+      <h2 class="text-4xl font-extrabold text-brand-dark mt-3" data-i18n="loc.title">Unsere Standorte</h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
@@ -393,7 +402,7 @@
             </div>
           </div>
           <div class="mt-6 pt-6 border-t border-gray-100">
-            <p class="text-xs text-gray-400 font-medium mb-1">Öffnungszeiten</p>
+            <p class="text-xs text-gray-400 font-medium mb-1" data-i18n="loc.hours">Öffnungszeiten</p>
             <p class="text-sm text-gray-600">Mo–Fr: 08:30–17:30 Uhr</p>
           </div>
         </div>
@@ -433,7 +442,7 @@
             </div>
           </div>
           <div class="mt-6 pt-6 border-t border-gray-100">
-            <p class="text-xs text-gray-400 font-medium mb-1">Öffnungszeiten</p>
+            <p class="text-xs text-gray-400 font-medium mb-1" data-i18n="loc.hours">Öffnungszeiten</p>
             <p class="text-sm text-gray-600">Mo–Fr: 08:30–17:30 Uhr</p>
           </div>
         </div>
@@ -451,9 +460,9 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16 reveal">
-      <span class="text-brand-blue text-xs font-bold tracking-widest uppercase">Im richtigen Team</span>
-      <h2 class="text-4xl font-extrabold text-brand-dark mt-3">Karriere bei ALEGIS</h2>
-      <p class="text-gray-500 mt-4 max-w-xl mx-auto">Wir suchen engagierte Fachkräfte, die gemeinsam mit uns wachsen wollen. Entdecken Sie unsere aktuellen Stellenangebote.</p>
+      <span class="text-brand-blue text-xs font-bold tracking-widest uppercase" data-i18n="cr.badge">Im richtigen Team</span>
+      <h2 class="text-4xl font-extrabold text-brand-dark mt-3" data-i18n="cr.title">Karriere bei ALEGIS</h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto" data-i18n="cr.sub">Wir suchen engagierte Fachkräfte, die gemeinsam mit uns wachsen wollen. Entdecken Sie unsere aktuellen Stellenangebote.</p>
     </div>
 
     <!-- Job listings -->
@@ -464,15 +473,16 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div class="flex flex-wrap gap-2 mb-2">
-              <span class="text-xs font-semibold bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full">Vollzeit</span>
+              <span class="text-xs font-semibold bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full" data-i18n="cr.ft">Vollzeit</span>
               <span class="text-xs font-semibold bg-green-100 text-green-700 px-3 py-1 rounded-full">Düsseldorf</span>
             </div>
-            <h3 class="text-lg font-bold text-brand-dark">Steuerberater (m/w/d)</h3>
-            <p class="text-gray-500 text-sm mt-1">Beratung nationaler und internationaler Mandanten · Jahresabschlüsse · Steuererklärungen</p>
+            <h3 class="text-lg font-bold text-brand-dark" data-i18n="j1.t">Steuerberater (m/w/d)</h3>
+            <p class="text-gray-500 text-sm mt-1" data-i18n="j1.d">Beratung nationaler und internationaler Mandanten · Jahresabschlüsse · Steuererklärungen</p>
           </div>
           <button
-            onclick="openModal('Steuerberater (m/w/d)', 'Düsseldorf')"
+            onclick="openModal(T('j1.t'), 'Düsseldorf')"
             class="shrink-0 px-6 py-2.5 bg-brand-dark text-white font-semibold text-sm rounded-full hover:bg-brand-blue transition-colors"
+            data-i18n="cr.apply"
           >
             Bewerben
           </button>
@@ -484,15 +494,16 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div class="flex flex-wrap gap-2 mb-2">
-              <span class="text-xs font-semibold bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full">Vollzeit</span>
+              <span class="text-xs font-semibold bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full" data-i18n="cr.ft">Vollzeit</span>
               <span class="text-xs font-semibold bg-green-100 text-green-700 px-3 py-1 rounded-full">Viersen</span>
             </div>
-            <h3 class="text-lg font-bold text-brand-dark">Steuerfachangestellte/r (m/w/d)</h3>
-            <p class="text-gray-500 text-sm mt-1">Buchführung · Lohnbuchhaltung · Vorbereitung von Steuererklärungen</p>
+            <h3 class="text-lg font-bold text-brand-dark" data-i18n="j2.t">Steuerfachangestellte/r (m/w/d)</h3>
+            <p class="text-gray-500 text-sm mt-1" data-i18n="j2.d">Buchführung · Lohnbuchhaltung · Vorbereitung von Steuererklärungen</p>
           </div>
           <button
-            onclick="openModal('Steuerfachangestellte/r (m/w/d)', 'Viersen')"
+            onclick="openModal(T('j2.t'), 'Viersen')"
             class="shrink-0 px-6 py-2.5 bg-brand-dark text-white font-semibold text-sm rounded-full hover:bg-brand-blue transition-colors"
+            data-i18n="cr.apply"
           >
             Bewerben
           </button>
@@ -504,15 +515,16 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div class="flex flex-wrap gap-2 mb-2">
-              <span class="text-xs font-semibold bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full">Vollzeit / Teilzeit</span>
+              <span class="text-xs font-semibold bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full" data-i18n="cr.ftp">Vollzeit / Teilzeit</span>
               <span class="text-xs font-semibold bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Düsseldorf · Viersen</span>
             </div>
-            <h3 class="text-lg font-bold text-brand-dark">Wirtschaftsprüfer / Prüfungsassistent (m/w/d)</h3>
-            <p class="text-gray-500 text-sm mt-1">Jahresabschlussprüfungen · Due Diligence · Prüfungsnahe Beratung</p>
+            <h3 class="text-lg font-bold text-brand-dark" data-i18n="j3.t">Wirtschaftsprüfer / Prüfungsassistent (m/w/d)</h3>
+            <p class="text-gray-500 text-sm mt-1" data-i18n="j3.d">Jahresabschlussprüfungen · Due Diligence · Prüfungsnahe Beratung</p>
           </div>
           <button
-            onclick="openModal('Wirtschaftsprüfer / Prüfungsassistent (m/w/d)', 'Düsseldorf · Viersen')"
+            onclick="openModal(T('j3.t'), 'Düsseldorf · Viersen')"
             class="shrink-0 px-6 py-2.5 bg-brand-dark text-white font-semibold text-sm rounded-full hover:bg-brand-blue transition-colors"
+            data-i18n="cr.apply"
           >
             Bewerben
           </button>
@@ -524,15 +536,16 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div class="flex flex-wrap gap-2 mb-2">
-              <span class="text-xs font-semibold bg-orange-100 text-orange-700 px-3 py-1 rounded-full">Ausbildung / Praktikum</span>
+              <span class="text-xs font-semibold bg-orange-100 text-orange-700 px-3 py-1 rounded-full" data-i18n="cr.ap">Ausbildung / Praktikum</span>
               <span class="text-xs font-semibold bg-green-100 text-green-700 px-3 py-1 rounded-full">Düsseldorf</span>
             </div>
-            <h3 class="text-lg font-bold text-brand-dark">Auszubildende/r – Steuerfachangestellte/r</h3>
-            <p class="text-gray-500 text-sm mt-1">Start: August 2026 · 3 Jahre Ausbildung · Übernahme möglich</p>
+            <h3 class="text-lg font-bold text-brand-dark" data-i18n="j4.t">Auszubildende/r – Steuerfachangestellte/r</h3>
+            <p class="text-gray-500 text-sm mt-1" data-i18n="j4.d">Start: August 2026 · 3 Jahre Ausbildung · Übernahme möglich</p>
           </div>
           <button
-            onclick="openModal('Auszubildende/r – Steuerfachangestellte/r', 'Düsseldorf')"
+            onclick="openModal(T('j4.t'), 'Düsseldorf')"
             class="shrink-0 px-6 py-2.5 bg-brand-dark text-white font-semibold text-sm rounded-full hover:bg-brand-blue transition-colors"
+            data-i18n="cr.apply"
           >
             Bewerben
           </button>
@@ -543,12 +556,13 @@
       <div class="reveal bg-gradient-to-r from-brand-navy to-brand-blue rounded-2xl p-7 text-white">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h3 class="text-lg font-bold">Initiativbewerbung</h3>
-            <p class="text-white/70 text-sm mt-1">Kein passendes Angebot? Wir freuen uns jederzeit über Initiativbewerbungen.</p>
+            <h3 class="text-lg font-bold" data-i18n="cr.init.t">Initiativbewerbung</h3>
+            <p class="text-white/70 text-sm mt-1" data-i18n="cr.init.d">Kein passendes Angebot? Wir freuen uns jederzeit über Initiativbewerbungen.</p>
           </div>
           <button
-            onclick="openModal('Initiativbewerbung', '')"
+            onclick="openModal(T('cr.init.t'), '')"
             class="shrink-0 px-6 py-2.5 bg-brand-accent text-brand-dark font-bold text-sm rounded-full hover:bg-yellow-400 transition-colors"
+            data-i18n="cr.init.btn"
           >
             Initiativ bewerben
           </button>
@@ -567,9 +581,9 @@
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16 reveal">
-      <span class="text-brand-accent text-xs font-bold tracking-widest uppercase">Schreiben Sie uns</span>
-      <h2 class="text-4xl font-extrabold text-white mt-3">Kontakt</h2>
-      <p class="text-white/50 mt-4 max-w-md mx-auto">Sprechen Sie uns an — wir melden uns innerhalb eines Werktags bei Ihnen.</p>
+      <span class="text-brand-accent text-xs font-bold tracking-widest uppercase" data-i18n="ct.badge">Schreiben Sie uns</span>
+      <h2 class="text-4xl font-extrabold text-white mt-3" data-i18n="ct.title">Kontakt</h2>
+      <p class="text-white/50 mt-4 max-w-md mx-auto" data-i18n="ct.sub">Sprechen Sie uns an — wir melden uns innerhalb eines Werktags bei Ihnen.</p>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -594,7 +608,7 @@
             </svg>
           </div>
           <div>
-            <p class="text-white/50 text-xs font-medium">Telefon (Düsseldorf)</p>
+            <p class="text-white/50 text-xs font-medium" data-i18n="ct.phone1">Telefon (Düsseldorf)</p>
             <p class="text-white text-sm mt-0.5">+49 211 123 456 0</p>
           </div>
         </div>
@@ -605,7 +619,7 @@
             </svg>
           </div>
           <div>
-            <p class="text-white/50 text-xs font-medium">Telefon (Viersen)</p>
+            <p class="text-white/50 text-xs font-medium" data-i18n="ct.phone2">Telefon (Viersen)</p>
             <p class="text-white text-sm mt-0.5">+49 2162 987 654 0</p>
           </div>
         </div>
@@ -615,33 +629,34 @@
       <form class="reveal space-y-4" id="contactForm" onsubmit="submitContact(event)">
         <div class="grid sm:grid-cols-2 gap-4">
           <input
-            type="text" placeholder="Vorname" required
+            type="text" data-i18n-placeholder="ct.fn" placeholder="Vorname" required
             class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors"
           />
           <input
-            type="text" placeholder="Nachname" required
+            type="text" data-i18n-placeholder="ct.ln" placeholder="Nachname" required
             class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors"
           />
         </div>
         <input
-          type="email" placeholder="E-Mail-Adresse" required
+          type="email" data-i18n-placeholder="ct.email" placeholder="E-Mail-Adresse" required
           class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors"
         />
         <input
-          type="text" placeholder="Betreff"
+          type="text" data-i18n-placeholder="ct.subj" placeholder="Betreff"
           class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors"
         />
         <textarea
-          rows="4" placeholder="Ihre Nachricht..." required
+          rows="4" data-i18n-placeholder="ct.msg" placeholder="Ihre Nachricht..." required
           class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors resize-none"
         ></textarea>
         <button
           type="submit"
           class="w-full py-3.5 bg-brand-accent text-brand-dark font-bold rounded-xl hover:bg-yellow-400 transition-colors"
+          data-i18n="ct.send"
         >
           Nachricht senden
         </button>
-        <div id="contactSuccess" class="hidden text-green-400 text-sm text-center font-medium pt-1">
+        <div id="contactSuccess" class="hidden text-green-400 text-sm text-center font-medium pt-1" data-i18n="ct.ok">
           ✓ Ihre Nachricht wurde erfolgreich gesendet!
         </div>
       </form>
@@ -662,10 +677,10 @@
       </div>
       <span class="text-white/70 text-sm font-semibold">ALEGIS</span>
     </div>
-    <p class="text-white/35 text-xs">© 2026 ALEGIS Steuerberatung. Alle Rechte vorbehalten.</p>
+    <p class="text-white/35 text-xs" data-i18n="ft.rights">© 2026 ALEGIS Steuerberatung. Alle Rechte vorbehalten.</p>
     <div class="flex gap-5 text-xs text-white/40">
-      <button onclick="openLegal('impressum')" class="hover:text-white transition-colors">Impressum</button>
-      <button onclick="openLegal('datenschutz')" class="hover:text-white transition-colors">Datenschutz</button>
+      <button onclick="openLegal('impressum')" class="hover:text-white transition-colors" data-i18n="ft.imp">Impressum</button>
+      <button onclick="openLegal('datenschutz')" class="hover:text-white transition-colors" data-i18n="ft.ds">Datenschutz</button>
     </div>
   </div>
 </footer>
@@ -681,7 +696,7 @@
     <div class="bg-gradient-to-r from-brand-navy to-brand-blue p-6 rounded-t-2xl">
       <div class="flex items-center justify-between">
         <div>
-          <p class="text-brand-accent text-xs font-bold tracking-widest uppercase">Bewerbung</p>
+          <p class="text-brand-accent text-xs font-bold tracking-widest uppercase" data-i18n="ap.badge">Bewerbung</p>
           <h3 id="modalTitle" class="text-white text-xl font-bold mt-1">Stelle</h3>
           <p id="modalLocation" class="text-white/60 text-sm mt-0.5 flex items-center gap-1">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -704,14 +719,14 @@
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
-          <label class="block text-xs font-semibold text-gray-500 mb-1.5">Vorname *</label>
+          <label class="block text-xs font-semibold text-gray-500 mb-1.5" data-i18n="ap.fn">Vorname *</label>
           <input type="text" name="firstname" required
             class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-blue transition-colors"
             placeholder="Max"
           />
         </div>
         <div>
-          <label class="block text-xs font-semibold text-gray-500 mb-1.5">Nachname *</label>
+          <label class="block text-xs font-semibold text-gray-500 mb-1.5" data-i18n="ap.ln">Nachname *</label>
           <input type="text" name="lastname" required
             class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-blue transition-colors"
             placeholder="Mustermann"
@@ -720,7 +735,7 @@
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-gray-500 mb-1.5">E-Mail-Adresse *</label>
+        <label class="block text-xs font-semibold text-gray-500 mb-1.5" data-i18n="ap.email">E-Mail-Adresse *</label>
         <input type="email" name="email" required
           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-blue transition-colors"
           placeholder="max.mustermann@email.de"
@@ -728,7 +743,7 @@
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-gray-500 mb-1.5">Telefonnummer</label>
+        <label class="block text-xs font-semibold text-gray-500 mb-1.5" data-i18n="ap.phone">Telefonnummer</label>
         <input type="tel" name="phone"
           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-blue transition-colors"
           placeholder="+49 ..."
@@ -736,34 +751,35 @@
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-gray-500 mb-1.5">Berufserfahrung</label>
+        <label class="block text-xs font-semibold text-gray-500 mb-1.5" data-i18n="ap.exp">Berufserfahrung</label>
         <select name="experience"
           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-blue transition-colors bg-white"
         >
-          <option value="">Bitte wählen</option>
-          <option>Berufseinsteiger</option>
-          <option>1–3 Jahre</option>
-          <option>3–5 Jahre</option>
-          <option>5–10 Jahre</option>
-          <option>Über 10 Jahre</option>
+          <option value="" data-i18n="ap.exp.0">Bitte wählen</option>
+          <option data-i18n="ap.exp.1">Berufseinsteiger</option>
+          <option data-i18n="ap.exp.2">1–3 Jahre</option>
+          <option data-i18n="ap.exp.3">3–5 Jahre</option>
+          <option data-i18n="ap.exp.4">5–10 Jahre</option>
+          <option data-i18n="ap.exp.5">Über 10 Jahre</option>
         </select>
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-gray-500 mb-1.5">Lebenslauf / Bewerbungsunterlagen</label>
+        <label class="block text-xs font-semibold text-gray-500 mb-1.5" data-i18n="ap.cv">Lebenslauf / Bewerbungsunterlagen</label>
         <div class="border-2 border-dashed border-gray-200 rounded-xl p-5 text-center hover:border-brand-blue transition-colors cursor-pointer" onclick="document.getElementById('fileInput').click()">
           <svg class="w-8 h-8 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-6m0 0l-3 3m3-3l3 3M20 16.5A3.5 3.5 0 0016.5 13h-1A5.5 5.5 0 105 16.5"/>
           </svg>
-          <p class="text-sm text-gray-400" id="fileLabel">PDF, DOC oder DOCX hochladen</p>
+          <p class="text-sm text-gray-400" id="fileLabel" data-i18n="ap.upload">PDF, DOC oder DOCX hochladen</p>
           <input id="fileInput" type="file" accept=".pdf,.doc,.docx" class="hidden" onchange="updateFileLabel(this)"/>
         </div>
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-gray-500 mb-1.5">Motivationsschreiben</label>
+        <label class="block text-xs font-semibold text-gray-500 mb-1.5" data-i18n="ap.motiv">Motivationsschreiben</label>
         <textarea name="motivation" rows="4"
           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-blue transition-colors resize-none"
+          data-i18n-placeholder="ap.motiv.ph"
           placeholder="Warum möchten Sie bei ALEGIS arbeiten?"
         ></textarea>
       </div>
@@ -771,20 +787,22 @@
       <div class="flex items-start gap-3 pt-1">
         <input type="checkbox" id="privacy" required class="mt-0.5 accent-brand-blue" />
         <label for="privacy" class="text-xs text-gray-500 leading-relaxed">
-          Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der
-          <a href="#" class="text-brand-blue hover:underline">Datenschutzerklärung</a> zu. *
+          <span data-i18n="ap.privacy">Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der</span>
+          <a href="#" class="text-brand-blue hover:underline" data-i18n="ap.privacy.link"> Datenschutzerklärung</a>
+          <span data-i18n="ap.privacy.end"> zu. *</span>
         </label>
       </div>
 
       <!-- Submit -->
       <div id="applySuccess" class="hidden bg-green-50 border border-green-200 rounded-xl p-4 text-center">
         <div class="text-green-500 text-2xl mb-1">✓</div>
-        <p class="text-green-700 font-semibold text-sm">Bewerbung erfolgreich eingereicht!</p>
-        <p class="text-green-600 text-xs mt-1">Wir melden uns in Kürze bei Ihnen.</p>
+        <p class="text-green-700 font-semibold text-sm" data-i18n="ap.ok.t">Bewerbung erfolgreich eingereicht!</p>
+        <p class="text-green-600 text-xs mt-1" data-i18n="ap.ok.d">Wir melden uns in Kürze bei Ihnen.</p>
       </div>
 
       <button type="submit" id="submitBtn"
         class="w-full py-3.5 bg-brand-dark text-white font-bold rounded-xl hover:bg-brand-blue transition-colors text-sm"
+        data-i18n="ap.submit"
       >
         Bewerbung absenden
       </button>
@@ -848,11 +866,11 @@
 
   function openModal(title, location) {
     document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalLocationText').textContent = location || 'Alle Standorte';
+    document.getElementById('modalLocationText').textContent = location || T('ap.loc.fallback');
     document.getElementById('applySuccess').classList.add('hidden');
     document.getElementById('submitBtn').classList.remove('hidden');
     document.getElementById('applyForm').reset();
-    document.getElementById('fileLabel').textContent = 'PDF, DOC oder DOCX hochladen';
+    document.getElementById('fileLabel').textContent = T('ap.upload');
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
@@ -873,7 +891,7 @@
   // ── File label update ──────────────────────
   function updateFileLabel(input) {
     const label = document.getElementById('fileLabel');
-    label.textContent = input.files[0] ? input.files[0].name : 'PDF, DOC oder DOCX hochladen';
+    label.textContent = input.files[0] ? input.files[0].name : T('ap.upload');
   }
 
   // ── Application submit ─────────────────────
@@ -895,12 +913,12 @@
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
     const success = document.getElementById('contactSuccess');
-    btn.textContent = 'Wird gesendet...';
+    btn.textContent = currentLang === 'en' ? 'Sending...' : 'Wird gesendet...';
     btn.disabled = true;
 
     setTimeout(() => {
       success.classList.remove('hidden');
-      btn.textContent = 'Nachricht senden';
+      btn.textContent = T('ct.send');
       btn.disabled = false;
       e.target.reset();
       setTimeout(() => success.classList.add('hidden'), 4000);
@@ -932,6 +950,128 @@
     if (e.target === modal) closeLegal();
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLegal(); });
+
+  // ── i18n ──────────────────────────────────
+  const translations = {
+    de: {
+      'nav.services':'Leistungen','nav.team':'Team','nav.locations':'Standorte','nav.career':'Karriere','nav.contact':'Kontakt','nav.cta':'Beratung anfragen',
+      'hero.sub':'Kompetenz, die sich auszahlt — professionelle Steuerberatung und Wirtschaftsprüfung für Unternehmen mit internationaler Perspektive.',
+      'hero.btn1':'Unsere Leistungen','hero.btn2':'Kontakt aufnehmen',
+      'hero.stat1':'Jahre Erfahrung','hero.stat2':'Standorte in NRW','hero.stat3':'Mandantenfokus','hero.stat4':'Ausrichtung',
+      'sv.badge':'Was wir bieten','sv.title':'Unsere Leistungen',
+      'sv.sub':'Maßgeschneiderte Lösungen für Unternehmen jeder Größe — von der laufenden Steuerberatung bis zur internationalen Strukturierung.',
+      'sv1.t':'Steuerberatung','sv1.d':'Umfassende Beratung in allen steuerlichen Angelegenheiten für Unternehmen, Freiberufler und Privatpersonen.',
+      'sv2.t':'Wirtschaftsprüfung','sv2.d':'Jahresabschlussprüfungen, Sonderprüfungen und prüfungsnahe Beratungsleistungen nach nationalen und internationalen Standards.',
+      'sv3.t':'Rechtsberatung','sv3.d':'Rechtliche Begleitung bei Unternehmensgründungen, Umstrukturierungen und Vertragsgestaltungen.',
+      'sv4.t':'Internationales Steuerrecht','sv4.d':'Grenzüberschreitende Steuerplanung, Verrechnungspreise und Beratung bei Auslandsaktivitäten.',
+      'sv5.t':'Lohnbuchhaltung & HR','sv5.d':'Lohn- und Gehaltsabrechnung, Sozialversicherungsberatung und arbeitsrechtliche Unterstützung.',
+      'sv6.t':'Buchführung & Abschlüsse','sv6.d':'Finanzbuchhaltung, Jahresabschlüsse nach HGB sowie betriebswirtschaftliche Auswertungen.',
+      'tm.badge':'Unsere Experten','tm.title':'Das Team',
+      'tm.sub':'Erfahrene Fachleute mit tiefem Verständnis für Ihre steuerlichen und wirtschaftlichen Herausforderungen.',
+      'tm1.role':'Steuerberaterin · Rechtsanwältin','tm1.desc':'Spezialisiert auf Unternehmenssteuerrecht und grenzüberschreitende Transaktionen mit besonderem Fokus auf den Mittelstand.','tm1.cta':'Kontakt aufnehmen →',
+      'tm2.role':'Wirtschaftsprüfer · Steuerberater','tm2.desc':'Jahrelange Erfahrung in der Jahresabschlussprüfung, Due-Diligence-Prüfungen und der betriebswirtschaftlichen Beratung.','tm2.cta':'Kontakt aufnehmen →',
+      'tm.join.t':'Werden Sie Teil des Teams','tm.join.d':'Wir wachsen — entdecken Sie offene Stellen und gestalten Sie Ihre Karriere bei ALEGIS.','tm.join.btn':'Jetzt bewerben',
+      'loc.badge':'Am richtigen Ort','loc.title':'Unsere Standorte','loc.hours':'Öffnungszeiten',
+      'cr.badge':'Im richtigen Team','cr.title':'Karriere bei ALEGIS',
+      'cr.sub':'Wir suchen engagierte Fachkräfte, die gemeinsam mit uns wachsen wollen. Entdecken Sie unsere aktuellen Stellenangebote.',
+      'cr.ft':'Vollzeit','cr.ftp':'Vollzeit / Teilzeit','cr.ap':'Ausbildung / Praktikum','cr.apply':'Bewerben',
+      'j1.t':'Steuerberater (m/w/d)','j1.d':'Beratung nationaler und internationaler Mandanten · Jahresabschlüsse · Steuererklärungen',
+      'j2.t':'Steuerfachangestellte/r (m/w/d)','j2.d':'Buchführung · Lohnbuchhaltung · Vorbereitung von Steuererklärungen',
+      'j3.t':'Wirtschaftsprüfer / Prüfungsassistent (m/w/d)','j3.d':'Jahresabschlussprüfungen · Due Diligence · Prüfungsnahe Beratung',
+      'j4.t':'Auszubildende/r – Steuerfachangestellte/r','j4.d':'Start: August 2026 · 3 Jahre Ausbildung · Übernahme möglich',
+      'cr.init.t':'Initiativbewerbung','cr.init.d':'Kein passendes Angebot? Wir freuen uns jederzeit über Initiativbewerbungen.','cr.init.btn':'Initiativ bewerben',
+      'ct.badge':'Schreiben Sie uns','ct.title':'Kontakt','ct.sub':'Sprechen Sie uns an — wir melden uns innerhalb eines Werktags bei Ihnen.',
+      'ct.phone1':'Telefon (Düsseldorf)','ct.phone2':'Telefon (Viersen)',
+      'ct.fn':'Vorname','ct.ln':'Nachname','ct.email':'E-Mail-Adresse','ct.subj':'Betreff','ct.msg':'Ihre Nachricht...','ct.send':'Nachricht senden','ct.ok':'✓ Ihre Nachricht wurde erfolgreich gesendet!',
+      'ft.rights':'© 2026 ALEGIS Steuerberatung. Alle Rechte vorbehalten.','ft.imp':'Impressum','ft.ds':'Datenschutz',
+      'ap.badge':'Bewerbung','ap.fn':'Vorname *','ap.ln':'Nachname *','ap.email':'E-Mail-Adresse *','ap.phone':'Telefonnummer','ap.exp':'Berufserfahrung',
+      'ap.exp.0':'Bitte wählen','ap.exp.1':'Berufseinsteiger','ap.exp.2':'1–3 Jahre','ap.exp.3':'3–5 Jahre','ap.exp.4':'5–10 Jahre','ap.exp.5':'Über 10 Jahre',
+      'ap.cv':'Lebenslauf / Bewerbungsunterlagen','ap.upload':'PDF, DOC oder DOCX hochladen','ap.motiv':'Motivationsschreiben','ap.motiv.ph':'Warum möchten Sie bei ALEGIS arbeiten?',
+      'ap.privacy':'Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der','ap.privacy.link':'Datenschutzerklärung','ap.privacy.end':'zu. *',
+      'ap.submit':'Bewerbung absenden','ap.ok.t':'Bewerbung erfolgreich eingereicht!','ap.ok.d':'Wir melden uns in Kürze bei Ihnen.',
+    },
+    en: {
+      'nav.services':'Services','nav.team':'Team','nav.locations':'Locations','nav.career':'Career','nav.contact':'Contact','nav.cta':'Request Consultation',
+      'hero.sub':'Expertise that pays off — professional tax consulting and auditing for companies with an international perspective.',
+      'hero.btn1':'Our Services','hero.btn2':'Get in Touch',
+      'hero.stat1':'Years Experience','hero.stat2':'Locations in NRW','hero.stat3':'Client Focus','hero.stat4':'International',
+      'sv.badge':'What We Offer','sv.title':'Our Services',
+      'sv.sub':'Tailored solutions for companies of all sizes — from ongoing tax consulting to international structuring.',
+      'sv1.t':'Tax Consulting','sv1.d':'Comprehensive advice on all tax matters for companies, freelancers, and individuals.',
+      'sv2.t':'Auditing','sv2.d':'Annual financial statement audits, special audits, and audit-related consulting to national and international standards.',
+      'sv3.t':'Legal Consulting','sv3.d':'Legal support for company formations, restructurings, and contract drafting.',
+      'sv4.t':'International Tax Law','sv4.d':'Cross-border tax planning, transfer pricing, and advice on international business activities.',
+      'sv5.t':'Payroll & HR','sv5.d':'Payroll accounting, social insurance consulting, and employment law support.',
+      'sv6.t':'Accounting & Financial Statements','sv6.d':'Financial accounting, annual financial statements under HGB, and business performance reports.',
+      'tm.badge':'Our Experts','tm.title':'The Team',
+      'tm.sub':'Experienced professionals with a deep understanding of your tax and business challenges.',
+      'tm1.role':'Tax Consultant · Attorney','tm1.desc':'Specialised in corporate tax law and cross-border transactions with a particular focus on the mid-market.','tm1.cta':'Get in touch →',
+      'tm2.role':'Auditor · Tax Consultant','tm2.desc':'Years of experience in annual financial statement audits, due diligence reviews, and business consulting.','tm2.cta':'Get in touch →',
+      'tm.join.t':'Join the Team','tm.join.d':'We are growing — discover open positions and shape your career at ALEGIS.','tm.join.btn':'Apply Now',
+      'loc.badge':'In the Right Place','loc.title':'Our Locations','loc.hours':'Office Hours',
+      'cr.badge':'In the Right Team','cr.title':'Career at ALEGIS',
+      'cr.sub':'We are looking for dedicated professionals who want to grow with us. Discover our current job openings.',
+      'cr.ft':'Full-Time','cr.ftp':'Full-Time / Part-Time','cr.ap':'Apprenticeship / Internship','cr.apply':'Apply',
+      'j1.t':'Tax Consultant (m/f/d)','j1.d':'Advising national and international clients · Annual financial statements · Tax returns',
+      'j2.t':'Tax Assistant (m/f/d)','j2.d':'Bookkeeping · Payroll accounting · Preparation of tax returns',
+      'j3.t':'Auditor / Audit Assistant (m/f/d)','j3.d':'Annual financial statement audits · Due Diligence · Audit-related consulting',
+      'j4.t':'Apprentice – Tax Assistant','j4.d':'Start: August 2026 · 3-year apprenticeship · Permanent employment possible',
+      'cr.init.t':'Unsolicited Application','cr.init.d':'No suitable opening? We welcome unsolicited applications at any time.','cr.init.btn':'Apply Speculatively',
+      'ct.badge':'Write to Us','ct.title':'Contact','ct.sub':'Reach out — we will get back to you within one business day.',
+      'ct.phone1':'Phone (Düsseldorf)','ct.phone2':'Phone (Viersen)',
+      'ct.fn':'First Name','ct.ln':'Last Name','ct.email':'Email Address','ct.subj':'Subject','ct.msg':'Your message...','ct.send':'Send Message','ct.ok':'✓ Your message was sent successfully!',
+      'ft.rights':'© 2026 ALEGIS Tax Consulting. All rights reserved.','ft.imp':'Legal Notice','ft.ds':'Privacy Policy',
+      'ap.badge':'Application','ap.fn':'First Name *','ap.ln':'Last Name *','ap.email':'Email Address *','ap.phone':'Phone Number','ap.exp':'Work Experience',
+      'ap.exp.0':'Please select','ap.exp.1':'Entry Level','ap.exp.2':'1–3 Years','ap.exp.3':'3–5 Years','ap.exp.4':'5–10 Years','ap.exp.5':'Over 10 Years',
+      'ap.cv':'CV / Application Documents','ap.upload':'Upload PDF, DOC or DOCX','ap.motiv':'Cover Letter','ap.motiv.ph':'Why would you like to work at ALEGIS?',
+      'ap.privacy':'I consent to the processing of my personal data in accordance with the','ap.privacy.link':'Privacy Policy','ap.privacy.end':'. *',
+      'ap.submit':'Submit Application','ap.ok.t':'Application submitted successfully!','ap.ok.d':'We will get back to you shortly.',
+    }
+  };
+
+  let currentLang = 'de';
+
+  function T(key) {
+    return (translations[currentLang] || translations.de)[key] || key;
+  }
+
+  function setLang(lang) {
+    if (!translations[lang]) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.title = lang === 'en'
+      ? 'ALEGIS – Tax Consulting & Auditing'
+      : 'ALEGIS – Steuerberatung & Wirtschaftsprüfung';
+
+    // Text nodes
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const val = T(el.dataset.i18n);
+      if (val) el.textContent = val;
+    });
+
+    // Placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const val = T(el.dataset.i18nPlaceholder);
+      if (val) el.placeholder = val;
+    });
+
+    // Lang toggle highlight
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      const active = btn.dataset.lang === lang;
+      btn.classList.toggle('opacity-40', !active);
+      btn.classList.toggle('text-brand-accent', active);
+      btn.classList.remove('opacity-100');
+    });
+
+    // Update legal modal title if open
+    const legalTitle = document.getElementById('legalTitle');
+    if (legalTitle && legalTitle.textContent) {
+      const isImp = legalTitle.textContent.includes('Impress') || legalTitle.textContent.includes('Legal');
+      legalTitle.textContent = isImp
+        ? (lang === 'en' ? 'Legal Notice' : 'Impressum')
+        : (lang === 'en' ? 'Privacy Policy' : 'Datenschutzerklärung');
+    }
+  }
 
   // ── Impressum content ──────────────────────
   const impressumHTML = `
