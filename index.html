@@ -57,6 +57,7 @@
     /* Card hover lift */
     .card-lift { transition: transform .3s ease, box-shadow .3s ease; }
     .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,.12); }
+    #contactForm input, #contactForm textarea { color-scheme: dark; color: #fff; }
 
     /* Modal */
     #applyModal { transition: opacity .25s ease; }
@@ -635,14 +636,14 @@
             <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.fn">Vorname</label>
             <input
               type="text" data-i18n-placeholder="ct.fn.ph" placeholder="z. B. Max" required
-              class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+              class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 text-sm focus:outline-none focus:border-brand-accent focus:bg-white/15 transition-colors [color-scheme:dark]"
             />
           </div>
           <div class="space-y-1.5">
             <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.ln">Nachname</label>
             <input
               type="text" data-i18n-placeholder="ct.ln.ph" placeholder="z. B. Mustermann" required
-              class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+              class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 text-sm focus:outline-none focus:border-brand-accent focus:bg-white/15 transition-colors [color-scheme:dark]"
             />
           </div>
         </div>
@@ -650,21 +651,21 @@
           <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.email">E-Mail-Adresse</label>
           <input
             type="email" data-i18n-placeholder="ct.email.ph" placeholder="ihre@email.de" required
-            class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 text-sm focus:outline-none focus:border-brand-accent focus:bg-white/15 transition-colors [color-scheme:dark]"
           />
         </div>
         <div class="space-y-1.5">
           <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.subj">Betreff</label>
           <input
             type="text" data-i18n-placeholder="ct.subj.ph" placeholder="z. B. Steuererklärung 2025, Unternehmensberatung …"
-            class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 text-sm focus:outline-none focus:border-brand-accent focus:bg-white/15 transition-colors [color-scheme:dark]"
           />
         </div>
         <div class="space-y-1.5">
           <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.msg.lbl">Ihre Nachricht</label>
           <textarea
             rows="4" data-i18n-placeholder="ct.msg.ph" placeholder="Beschreiben Sie Ihr Anliegen — je mehr Details, desto besser können wir helfen." required
-            class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors resize-none"
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 text-sm focus:outline-none focus:border-brand-accent focus:bg-white/15 transition-colors resize-none [color-scheme:dark]"
           ></textarea>
         </div>
         <button
