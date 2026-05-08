@@ -935,41 +935,49 @@
 
   // ── Impressum content ──────────────────────
   const impressumHTML = `
-    <h3 class="font-semibold text-brand-dark mt-4 mb-1">Angaben gemäß § 5 TMG</h3>
-    <p>ALEGIS GmbH Steuerberatungsgesellschaft<br>Berliner Allee 32<br>40212 Düsseldorf<br>Deutschland</p>
+    <p><strong>Berufsregeln und Angaben nach &sect; 5 Telemediengesetz (TMG), der Dienstleistungs-Informationspflichten-Verordnung (DL Info V), der ODR-Verordnung und des Verbraucherstreitbeilegungsgesetzes (VSBG)</strong></p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Kontakt</h3>
-    <p>Telefon: +49 211 959 897 0<br>E-Mail: infodus@alegis.de</p>
+    <p class="mt-3">Anbieter:</p>
+    <p class="mt-1"><strong>ALEGIS GmbH<br>Steuerberatungsgesellschaft</strong><br>Berliner Allee 32<br>40212 Düsseldorf<br>Deutschland</p>
+    <p class="mt-3">Telefon: +49 211 959 897 0<br>Telefax: +49 211 959897 99<br>E-Mail: infodus@alegis.de</p>
+    <p class="mt-3">Gesch&auml;ftsf&uuml;hrer: StB RA Sandra Behn, StB WP Michael Buder<br>Handelsregister: Amtsgericht D&uuml;sseldorf, HRB 63420<br>Steuernummer: 105/5841/2113<br>Umsatzsteuer-Identifikationsnummer: DE 271669035</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Geschäftsführung</h3>
-    <p>StB RA Sandra Behn<br>StB WP Michael Buder</p>
+    <p class="mt-4">F&uuml;r diese Gesellschaft t&auml;tige Berufsträger (Rechtsanw&auml;lte, Steuerberater, Wirtschaftspr&uuml;fer):</p>
+    <p class="mt-1">Rechtsanw&auml;ltin / Steuerberaterin Sandra Behn<br>Steuerberater / Wirtschaftspr&uuml;fer Michael Buder<br>Steuerberaterin Dr. Alexandra Tr&ouml;ger</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Handelsregister</h3>
-    <p>Amtsgericht Düsseldorf, HRB 63420</p>
+    <p class="mt-4">Zulassung, Berufsbezeichnung und zust&auml;ndige Kammern:</p>
+    <p class="mt-2">Die ALEGIS GmbH Steuerberatungsgesellschaft unterliegt der Aufsicht der Rechtsanwaltskammer D&uuml;sseldorf (<a href="https://www.rak-dus.de" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.rak-dus.de</a>) sowie der Steuerberaterkammer D&uuml;sseldorf (<a href="https://www.stb-duesseldorf.de" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.stb-duesseldorf.de</a>).</p>
+    <p class="mt-2">Die in der Gesellschaft t&auml;tigen Rechtsanw&auml;lte sind als Rechtsanw&auml;ltin oder Rechtsanwalt in der Bundesrepublik Deutschland zugelassen und f&uuml;hren die ihnen in Deutschland verliehene Berufszeichnung als &bdquo;Rechtsanwalt&ldquo;. Sie geh&ouml;ren jeweils der f&uuml;r ihre Zulassung &ouml;rtlich zust&auml;ndigen Rechtsanwaltskammer an (<a href="https://www.brak.de/die-brak/regionale-kammern/" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.brak.de/die-brak/regionale-kammern/</a>); vorliegend der Rechtsanwaltskammer D&uuml;sseldorf.</p>
+    <p class="mt-2">Die in der Gesellschaft t&auml;tigen Steuerberater sind als Steuerberaterin oder Steuerberater in der Bundesrepublik Deutschland zugelassen und f&uuml;hren die ihnen in Deutschland verliehene Berufszeichnung als &bdquo;Steuerberater&ldquo;. Sie sind Mitglied der f&uuml;r sie jeweils &ouml;rtlich zust&auml;ndigen Steuerberaterkammer (<a href="https://www.bstbk.de/de/bstbk/organisation/steuerberaterkammern/" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.bstbk.de/de/bstbk/organisation/steuerberaterkammern/</a>); hier der Steuerberaterkammer D&uuml;sseldorf.</p>
+    <p class="mt-2">Sofern in der Gesellschaft t&auml;tige Rechtsanw&auml;ltinnen und Rechtsanw&auml;lte oder Steuerberaterinnen und Steuerberater gleichzeitig auch Wirtschaftspr&uuml;fer/in sind, so sind diese in der Bundesrepublik Deutschland als Wirtschaftspr&uuml;fer/in zugelassen und f&uuml;hren sie die ihnen in Deutschland jeweils verliehene Berufszeichnung als &bdquo;Wirtschaftspr&uuml;fer&ldquo; und geh&ouml;ren den f&uuml;r sie jeweils &ouml;rtlich zust&auml;ndigen Berufskammern an (<a href="https://www.wpk.de/" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.wpk.de</a>).</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Steuer- und Umsatzsteuer-ID</h3>
-    <p>Steuernummer: 105/5841/2113<br>USt-IdNr.: DE 271669035</p>
+    <p class="mt-4"><strong>Berufsrechtliche Regelungen</strong></p>
+    <p class="mt-1">Es gelten folgende berufsrechtliche Regelungen:</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Berufsrechtliche Angaben</h3>
-    <p>
-      <strong>Sandra Behn</strong> – Rechtsanwältin und Steuerberaterin<br>
-      <strong>Michael Buder</strong> – Wirtschaftsprüfer und Steuerberater<br>
-      <strong>Dr. Alexandra Tröger</strong> – Steuerberaterin
-    </p>
-    <p class="mt-2">Zuständige Aufsichtsbehörden:<br>
-      Rechtsanwaltskammer Düsseldorf<br>
-      Steuerberaterkammer Düsseldorf
-    </p>
+    <p class="mt-3"><strong>F&uuml;r Rechtsanw&auml;lte:</strong></p>
+    <p class="mt-1">Bundesrechtsanwaltsordnung (BRAO)<br>Berufsordnung f&uuml;r Rechtsanw&auml;lte (BORA)<br>Fachanwaltsordnung (FAO)<br>Rechtsanwaltsverg&uuml;tungsgesetz (RVG)<br>Berufsregeln der Rechtsanw&auml;lte der Europ&auml;ischen Union (CCBE-Berufsregeln)<br>Gesetz &uuml;ber die T&auml;tigkeit europ&auml;ischer Rechtsanw&auml;lte in Deutschland (EuRAG) vom 9. M&auml;rz 2000 (BGBl. I S. 182, 1349)<br>Law Implementing the Directives of the European Community pertaining to the professional law regulating the legal profession</p>
+    <p class="mt-2">S&auml;mtliche vorstehenden Vorschriften sind zu finden auf der Homepage der Bundesrechtsanwaltskammer (<a href="https://www.brak.de" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.brak.de</a>).</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Berufshaftpflichtversicherung</h3>
-    <p>Zurich Insurance plc, Frankfurt am Main</p>
+    <p class="mt-3"><strong>F&uuml;r Steuerberater:</strong></p>
+    <p class="mt-1">Steuerberatungsgesetz (StBerG)<br>Durchf&uuml;hrungsverordnung zum Steuerberatungsgesetz (DVStB)<br>Berufsordnung der Bundessteuerberaterkammer (BOStB)<br>Steuerberaterverg&uuml;tungsverordnung (StBVV)</p>
+    <p class="mt-2">S&auml;mtliche vorstehenden Vorschriften sind zu finden auf der Homepage der Bundessteuerberaterkammer (<a href="https://www.bstbk.de" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.bstbk.de</a>).</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Verbraucherstreitbeilegung</h3>
-    <p>Die ALEGIS GmbH ist bereit, an Streitbeilegungsverfahren vor der Schlichtungsstelle der Rechtsanwaltschaft teilzunehmen. Im Übrigen nimmt die ALEGIS GmbH nicht an Verfahren zur alternativen Streitbeilegung vor einer Verbraucherschlichtungsstelle teil.</p>
-    <p class="mt-2">Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie unter <a href="https://ec.europa.eu/consumers/odr" class="text-brand-blue hover:underline" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a> finden.</p>
+    <p class="mt-3"><strong>F&uuml;r Wirtschaftspr&uuml;fer:</strong></p>
+    <p class="mt-1">Wirtschaftspr&uuml;ferordnung (WPO)<br>Berufssatzung f&uuml;r Wirtschaftspr&uuml;fer / vereidigte Buchpr&uuml;fer (BS WP / vBP)<br>Satzung f&uuml;r Qualit&auml;tskontrolle<br>Wirtschaftspr&uuml;fer-Berufshaftpflichtversicherungsordnung (WPBHV)</p>
+    <p class="mt-2">S&auml;mtliche vorstehenden Vorschriften sind zu finden auf der Homepage der Wirtschaftspr&uuml;ferkammer (<a href="https://www.wpk.de" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.wpk.de</a>).</p>
 
-    <h3 class="font-semibold text-brand-dark mt-5 mb-1">Haftungsausschluss</h3>
-    <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+    <p class="mt-4"><strong>Berufshaftpflichtversicherung</strong></p>
+    <p class="mt-1">Die ALEGIS GmbH Steuerberatungsgesellschaft unterh&auml;lt in &Uuml;bereinstimmung mit den gesetzlichen Bestimmungen eine Berufshaftpflichtversicherung f&uuml;r die bei ihr t&auml;tigen Rechtsanw&auml;lte und Steuerberater.</p>
+    <p class="mt-2">Der Berufshaftpflichtversicherer der ALEGIS GmbH Steuerberatungsgesellschaft ist die</p>
+    <p class="mt-1">Zurich Insurance plc<br>Niederlassung Deutschland<br>Platz der Einheit 2<br>60327 Frankfurt am Main<br>Amtsgericht Frankfurt am Main HRB 88352</p>
+    <p class="mt-2">Der Geltungsbereich dieser Versicherung ist weltweit. Die Versicherung erf&uuml;llt mindestens die gesetzlichen Anforderungen nach &sect; 51 und &sect; 59j Bundesrechtsanwaltsordnung (BRAO) und &sect; 67 Steuerberatungsgesetz (StBerG) in Verbindung mit &sect;&sect; 51 ff. der Verordnung zur Durchf&uuml;hrung der Vorschriften &uuml;ber Steuerberater, Steuerbevollm&auml;chtigte und Steuerberatungsgesellschaften (DVStB).</p>
+
+    <p class="mt-4"><strong>Verbraucherstreitbeilegung und EU-Online-Streitbeilegungsplattform</strong></p>
+    <p class="mt-1">Zust&auml;ndige Verbraucherschlichtungsstelle f&uuml;r verm&ouml;gensrechtliche Streitigkeiten bis zu einem Wert von 50.000 Euro ist die Schlichtungsstelle der Rechtsanwaltschaft, Neue Gr&uuml;nstr. 17, 10179 Berlin, <a href="https://www.s-d-r.org" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.s-d-r.org</a>. Rechtsanw&auml;lte sind allerdings nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Die ALEGIS Rechtsanwaltsgesellschaft Steuerberatungsgesellschaft mbH nimmt nicht an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle, insbesondere der Schlichtungsstelle der Rechtsanwaltschaft, teil.</p>
+    <p class="mt-2">Die Europ&auml;ische Kommission stellt unter <a href="https://www.ec.europa.eu/consumers/odr" class="text-brand-blue hover:underline" target="_blank" rel="noopener">www.ec.europa.eu/consumers/odr</a> eine Plattform zur Online-Streitbeilegung bereit.</p>
+
+    <p class="mt-4"><strong>Disclaimer f&uuml;r Verlinkungen</strong></p>
+    <p class="mt-1">Wir &uuml;bernehmen keine Haftung f&uuml;r die Richtigkeit der Inhalte der auf diesen Webseiten enthaltenen Links. Auf die aktuelle und zuk&uuml;nftige Gestaltung, die Inhalte oder die Urheberschaft der gelinkten/verkn&uuml;pften Seiten haben wir keinerlei Einfluss. Deshalb distanzieren wir uns hiermit ausdr&uuml;cklich von allen Inhalten der verlinkten Seiten. F&uuml;r illegale, fehlerhafte oder unvollst&auml;ndige Inhalte und insbesondere f&uuml;r Sch&auml;den, die aus der Nutzung oder Nichtnutzung solcherart dargebotener Informationen entstehen, haftet allein der Anbieter der Seiten, auf welche verwiesen wurde.</p>
   `;
 
   // ── Datenschutz content ────────────────────
