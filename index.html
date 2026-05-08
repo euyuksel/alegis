@@ -216,7 +216,7 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
 
       <!-- Card 1 -->
-      <div class="reveal bg-white rounded-2xl p-8 card-lift shadow-sm border border-gray-100">
+      <div class="reveal bg-white rounded-2xl p-8 card-lift shadow-sm border border-gray-100 cursor-pointer group" onclick="openServiceModal('sv1')">
         <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-5">
           <svg class="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
@@ -224,6 +224,7 @@
         </div>
         <h3 class="text-lg font-bold text-brand-dark mb-2" data-i18n="sv1.t">Steuerberatung</h3>
         <p class="text-gray-500 text-sm leading-relaxed" data-i18n="sv1.d">Umfassende Beratung in allen steuerlichen Angelegenheiten für Unternehmen, Freiberufler und Privatpersonen.</p>
+        <span class="inline-flex items-center gap-1 mt-4 text-xs font-semibold text-brand-blue group-hover:text-brand-accent transition-colors" data-i18n="sv.more">Mehr erfahren <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
       </div>
 
       <!-- Card 2 -->
@@ -941,6 +942,49 @@
     }, 1000);
   }
   // ── Legal modals ───────────────────────────
+  const serviceData = {
+    sv1: {
+      titleKey: 'sv1.t',
+      subKey: 'sv1.modal.sub',
+      sections: [
+        {
+          headingKey: 'sv1.s1.h',
+          items: ['sv1.s1.i1','sv1.s1.i2','sv1.s1.i3','sv1.s1.i4','sv1.s1.i5','sv1.s1.i6','sv1.s1.i7']
+        },
+        {
+          headingKey: 'sv1.s2.h',
+          items: ['sv1.s2.i1','sv1.s2.i2','sv1.s2.i3','sv1.s2.i4','sv1.s2.i5','sv1.s2.i6','sv1.s2.i7','sv1.s2.i8','sv1.s2.i9','sv1.s2.i10']
+        }
+      ]
+    }
+  };
+
+  function openServiceModal(id) {
+    const d = serviceData[id];
+    if (!d) return;
+    document.getElementById('svModalTitle').textContent = T(d.titleKey);
+    document.getElementById('svModalSub').textContent = T(d.subKey);
+    const body = document.getElementById('svModalBody');
+    body.innerHTML = d.sections.map(sec => `
+      <div>
+        <p class="text-xs font-bold text-brand-dark uppercase tracking-wider mb-3">${T(sec.headingKey)}</p>
+        <ul class="space-y-2">
+          ${sec.items.map(k => `
+            <li class="flex gap-2.5 text-sm text-gray-600">
+              <span class="text-brand-accent mt-0.5 shrink-0">&#9658;</span>
+              <span>${T(k)}</span>
+            </li>`).join('')}
+        </ul>
+      </div>`).join('');
+    document.getElementById('serviceModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeServiceModal() {
+    document.getElementById('serviceModal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
   const teamData = {
     sb: {
       initials: 'SB',
@@ -1037,7 +1081,28 @@
       'hero.stat1':'Jahre Erfahrung','hero.stat2':'Standorte in NRW','hero.stat3':'Mandantenfokus','hero.stat4':'Ausrichtung',
       'sv.badge':'Was wir bieten','sv.title':'Unsere Leistungen',
       'sv.sub':'Maßgeschneiderte Lösungen für Unternehmen jeder Größe — von der laufenden Steuerberatung bis zur internationalen Strukturierung.',
+      'sv.more':'Mehr erfahren',
       'sv1.t':'Steuerberatung','sv1.d':'Umfassende Beratung in allen steuerlichen Angelegenheiten für Unternehmen, Freiberufler und Privatpersonen.',
+      'sv1.modal.sub':'Steuerberatung mit zielgerichteter Akribie — von der laufenden Buchführung bis zur internationalen Strukturierung.',
+      'sv1.s1.h':'Allgemeine Steuerberatung',
+      'sv1.s1.i1':'Finanzbuchhaltung und laufende Überwachung',
+      'sv1.s1.i2':'Lohn- und Gehaltsabrechnung',
+      'sv1.s1.i3':'Erstellung von Jahresabschlüssen',
+      'sv1.s1.i4':'Einnahmen-Überschuss-Rechnungen',
+      'sv1.s1.i5':'Privat- und betriebliche Steuererklärungen',
+      'sv1.s1.i6':'Vorbereitung und Begleitung von Betriebsprüfungen',
+      'sv1.s1.i7':'Rechtsbehelfs- und Klageverfahren',
+      'sv1.s2.h':'Spezielle Steuerberatung',
+      'sv1.s2.i1':'Steueroptimale Gestaltung von Unternehmensstrukturen',
+      'sv1.s2.i2':'Implementierung von Reporting-Systemen',
+      'sv1.s2.i3':'Latente Steueranalyse und Konzernreporting',
+      'sv1.s2.i4':'Steuerplanung für Unternehmen und Privatpersonen',
+      'sv1.s2.i5':'Analyse grenzüberschreitender Transaktionen',
+      'sv1.s2.i6':'Verrechnungspreisdokumentation',
+      'sv1.s2.i7':'Risikomanagementsysteme',
+      'sv1.s2.i8':'Beratung in Steuerstrafangelegenheiten',
+      'sv1.s2.i9':'Nachfolgeplanungskonzepte',
+      'sv1.s2.i10':'Steueroptimierung bei M&A-Transaktionen',
       'sv2.t':'Wirtschaftsprüfung','sv2.d':'Jahresabschlussprüfungen, Sonderprüfungen und prüfungsnahe Beratungsleistungen nach nationalen und internationalen Standards.',
       'sv3.t':'Rechtsberatung','sv3.d':'Rechtliche Begleitung bei Unternehmensgründungen, Umstrukturierungen und Vertragsgestaltungen.',
       'sv4.t':'Internationales Steuerrecht','sv4.d':'Grenzüberschreitende Steuerplanung, Verrechnungspreise und Beratung bei Auslandsaktivitäten.',
@@ -1096,7 +1161,28 @@
       'hero.stat1':'Years Experience','hero.stat2':'Locations in NRW','hero.stat3':'Client Focus','hero.stat4':'International',
       'sv.badge':'What We Offer','sv.title':'Our Services',
       'sv.sub':'Tailored solutions for companies of all sizes — from ongoing tax consulting to international structuring.',
+      'sv.more':'Learn more',
       'sv1.t':'Tax Consulting','sv1.d':'Comprehensive advice on all tax matters for companies, freelancers, and individuals.',
+      'sv1.modal.sub':'Tax consulting with focused precision — from ongoing bookkeeping to international structuring.',
+      'sv1.s1.h':'General Tax Consulting',
+      'sv1.s1.i1':'Financial accounting and ongoing monitoring',
+      'sv1.s1.i2':'Payroll processing',
+      'sv1.s1.i3':'Annual financial statement preparation',
+      'sv1.s1.i4':'Income-surplus accounting statements',
+      'sv1.s1.i5':'Personal and business tax returns',
+      'sv1.s1.i6':'Audit preparation and support',
+      'sv1.s1.i7':'Legal remedies and litigation management',
+      'sv1.s2.h':'Specialised Tax Consulting',
+      'sv1.s2.i1':'Tax-optimal corporate structure design',
+      'sv1.s2.i2':'Reporting system implementation',
+      'sv1.s2.i3':'Latent tax analysis and group reporting',
+      'sv1.s2.i4':'Business and personal tax planning',
+      'sv1.s2.i5':'International transaction analysis',
+      'sv1.s2.i6':'Transfer pricing documentation',
+      'sv1.s2.i7':'Risk management systems',
+      'sv1.s2.i8':'Tax criminal matter advisory',
+      'sv1.s2.i9':'Succession planning concepts',
+      'sv1.s2.i10':'M&A tax optimisation',
       'sv2.t':'Auditing','sv2.d':'Annual financial statement audits, special audits, and audit-related consulting to national and international standards.',
       'sv3.t':'Legal Consulting','sv3.d':'Legal support for company formations, restructurings, and contract drafting.',
       'sv4.t':'International Tax Law','sv4.d':'Cross-border tax planning, transfer pricing, and advice on international business activities.',
@@ -1330,6 +1416,27 @@
   `;
 </script>
 
+
+<!-- ═══════════════════════════════════════════
+     SERVICE DETAIL MODAL
+═══════════════════════════════════════════ -->
+<div id="serviceModal" class="hidden fixed inset-0 z-[105] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onclick="if(event.target===this)closeServiceModal()">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] flex flex-col overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-br from-brand-navy to-brand-blue px-7 py-6 shrink-0 relative">
+      <button onclick="closeServiceModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div id="svModalIcon" class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-3">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/></svg>
+      </div>
+      <h2 id="svModalTitle" class="text-white text-xl font-bold"></h2>
+      <p id="svModalSub" class="text-white/60 text-sm mt-1"></p>
+    </div>
+    <!-- Body -->
+    <div id="svModalBody" class="overflow-y-auto p-7 space-y-6"></div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════
      TEAM PROFILE MODAL
