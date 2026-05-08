@@ -629,29 +629,44 @@
       </div>
 
       <!-- Form -->
-      <form class="reveal space-y-4" id="contactForm" onsubmit="submitContact(event)">
+      <form class="reveal space-y-5" id="contactForm" onsubmit="submitContact(event)">
         <div class="grid sm:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.fn">Vorname</label>
+            <input
+              type="text" data-i18n-placeholder="ct.fn.ph" placeholder="z. B. Max" required
+              class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+            />
+          </div>
+          <div class="space-y-1.5">
+            <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.ln">Nachname</label>
+            <input
+              type="text" data-i18n-placeholder="ct.ln.ph" placeholder="z. B. Mustermann" required
+              class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+            />
+          </div>
+        </div>
+        <div class="space-y-1.5">
+          <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.email">E-Mail-Adresse</label>
           <input
-            type="text" data-i18n-placeholder="ct.fn" placeholder="Vorname" required
-            class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors"
-          />
-          <input
-            type="text" data-i18n-placeholder="ct.ln" placeholder="Nachname" required
-            class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+            type="email" data-i18n-placeholder="ct.email.ph" placeholder="ihre@email.de" required
+            class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors"
           />
         </div>
-        <input
-          type="email" data-i18n-placeholder="ct.email" placeholder="E-Mail-Adresse" required
-          class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors"
-        />
-        <input
-          type="text" data-i18n-placeholder="ct.subj" placeholder="Betreff"
-          class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors"
-        />
-        <textarea
-          rows="4" data-i18n-placeholder="ct.msg" placeholder="Ihre Nachricht..." required
-          class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/35 text-sm focus:outline-none focus:border-brand-accent transition-colors resize-none"
-        ></textarea>
+        <div class="space-y-1.5">
+          <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.subj">Betreff</label>
+          <input
+            type="text" data-i18n-placeholder="ct.subj.ph" placeholder="z. B. Steuererklärung 2025, Unternehmensberatung …"
+            class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors"
+          />
+        </div>
+        <div class="space-y-1.5">
+          <label class="block text-white/60 text-xs font-semibold uppercase tracking-wider" data-i18n="ct.msg.lbl">Ihre Nachricht</label>
+          <textarea
+            rows="4" data-i18n-placeholder="ct.msg.ph" placeholder="Beschreiben Sie Ihr Anliegen — je mehr Details, desto besser können wir helfen." required
+            class="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-brand-accent transition-colors resize-none"
+          ></textarea>
+        </div>
         <button
           type="submit"
           class="w-full py-3.5 bg-brand-accent text-brand-dark font-bold rounded-xl hover:bg-yellow-400 transition-colors"
@@ -1062,7 +1077,10 @@
       'cr.init.t':'Initiativbewerbung','cr.init.d':'Kein passendes Angebot? Wir freuen uns jederzeit über Initiativbewerbungen.','cr.init.btn':'Initiativ bewerben',
       'ct.badge':'Schreiben Sie uns','ct.title':'Kontakt','ct.sub':'Sprechen Sie uns an — wir melden uns innerhalb eines Werktags bei Ihnen.',
       'ct.phone1':'Telefon (Düsseldorf)','ct.phone2':'Telefon (Viersen)',
-      'ct.fn':'Vorname','ct.ln':'Nachname','ct.email':'E-Mail-Adresse','ct.subj':'Betreff','ct.msg':'Ihre Nachricht...','ct.send':'Nachricht senden','ct.ok':'✓ Ihre Nachricht wurde erfolgreich gesendet!',
+      'ct.fn':'Vorname','ct.ln':'Nachname','ct.email':'E-Mail-Adresse','ct.subj':'Betreff','ct.msg.lbl':'Ihre Nachricht','ct.send':'Nachricht senden','ct.ok':'✓ Ihre Nachricht wurde erfolgreich gesendet!',
+      'ct.fn.ph':'z. B. Max','ct.ln.ph':'z. B. Mustermann','ct.email.ph':'ihre@email.de',
+      'ct.subj.ph':'z. B. Steuererklärung 2025, Unternehmensberatung …',
+      'ct.msg.ph':'Beschreiben Sie Ihr Anliegen — je mehr Details, desto besser können wir helfen.',
       'ft.rights':'© 2026 ALEGIS Steuerberatung. Alle Rechte vorbehalten.','ft.imp':'Impressum','ft.ds':'Datenschutz',
       'ap.badge':'Bewerbung','ap.fn':'Vorname *','ap.ln':'Nachname *','ap.email':'E-Mail-Adresse *','ap.phone':'Telefonnummer','ap.exp':'Berufserfahrung',
       'ap.exp.0':'Bitte wählen','ap.exp.1':'Berufseinsteiger','ap.exp.2':'1–3 Jahre','ap.exp.3':'3–5 Jahre','ap.exp.4':'5–10 Jahre','ap.exp.5':'Über 10 Jahre',
@@ -1118,7 +1136,10 @@
       'cr.init.t':'Unsolicited Application','cr.init.d':'No suitable opening? We welcome unsolicited applications at any time.','cr.init.btn':'Apply Speculatively',
       'ct.badge':'Write to Us','ct.title':'Contact','ct.sub':'Reach out — we will get back to you within one business day.',
       'ct.phone1':'Phone (Düsseldorf)','ct.phone2':'Phone (Viersen)',
-      'ct.fn':'First Name','ct.ln':'Last Name','ct.email':'Email Address','ct.subj':'Subject','ct.msg':'Your message...','ct.send':'Send Message','ct.ok':'✓ Your message was sent successfully!',
+      'ct.fn':'First Name','ct.ln':'Last Name','ct.email':'Email Address','ct.subj':'Subject','ct.msg.lbl':'Your Message','ct.send':'Send Message','ct.ok':'✓ Your message was sent successfully!',
+      'ct.fn.ph':'e.g. John','ct.ln.ph':'e.g. Smith','ct.email.ph':'your@email.com',
+      'ct.subj.ph':'e.g. Tax return 2025, Business consulting …',
+      'ct.msg.ph':'Describe your enquiry — the more detail you provide, the better we can assist.',
       'ft.rights':'© 2026 ALEGIS Tax Consulting. All rights reserved.','ft.imp':'Legal Notice','ft.ds':'Privacy Policy',
       'ap.badge':'Application','ap.fn':'First Name *','ap.ln':'Last Name *','ap.email':'Email Address *','ap.phone':'Phone Number','ap.exp':'Work Experience',
       'ap.exp.0':'Please select','ap.exp.1':'Entry Level','ap.exp.2':'1–3 Years','ap.exp.3':'3–5 Years','ap.exp.4':'5–10 Years','ap.exp.5':'Over 10 Years',
