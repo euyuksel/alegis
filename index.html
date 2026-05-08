@@ -907,11 +907,10 @@
     }, 1000);
   }
   // ── Legal modals ───────────────────────────
-  const legalModal = document.getElementById('legalModal');
-
   function openLegal(type) {
-    const title  = document.getElementById('legalTitle');
-    const body   = document.getElementById('legalBody');
+    const modal = document.getElementById('legalModal');
+    const title = document.getElementById('legalTitle');
+    const body  = document.getElementById('legalBody');
     if (type === 'impressum') {
       title.textContent = 'Impressum';
       body.innerHTML = impressumHTML;
@@ -919,16 +918,19 @@
       title.textContent = 'Datenschutzerklärung';
       body.innerHTML = datenschutzHTML;
     }
-    legalModal.classList.remove('hidden');
+    modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
 
   function closeLegal() {
-    legalModal.classList.add('hidden');
+    document.getElementById('legalModal').classList.add('hidden');
     document.body.style.overflow = '';
   }
 
-  legalModal.addEventListener('click', (e) => { if (e.target === legalModal) closeLegal(); });
+  document.addEventListener('click', (e) => {
+    const modal = document.getElementById('legalModal');
+    if (e.target === modal) closeLegal();
+  });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLegal(); });
 
   // ── Impressum content ──────────────────────
