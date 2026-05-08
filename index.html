@@ -736,6 +736,7 @@
 
     <!-- Body -->
     <form id="applyForm" class="p-6 space-y-4" onsubmit="submitApplication(event)">
+      <input type="hidden" name="position" id="applyPosition" />
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
@@ -791,7 +792,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-6m0 0l-3 3m3-3l3 3M20 16.5A3.5 3.5 0 0016.5 13h-1A5.5 5.5 0 105 16.5"/>
           </svg>
           <p class="text-sm text-gray-400" id="fileLabel" data-i18n="ap.upload">PDF, DOC oder DOCX hochladen</p>
-          <input id="fileInput" type="file" accept=".pdf,.doc,.docx" class="hidden" onchange="updateFileLabel(this)"/>
+          <input id="fileInput" name="cv" type="file" accept=".pdf,.doc,.docx" class="hidden" onchange="updateFileLabel(this)"/>
         </div>
       </div>
 
@@ -813,11 +814,14 @@
         </label>
       </div>
 
-      <!-- Submit -->
+      <!-- Submit feedback -->
       <div id="applySuccess" class="hidden bg-green-50 border border-green-200 rounded-xl p-4 text-center">
         <div class="text-green-500 text-2xl mb-1">✓</div>
         <p class="text-green-700 font-semibold text-sm" data-i18n="ap.ok.t">Bewerbung erfolgreich eingereicht!</p>
         <p class="text-green-600 text-xs mt-1" data-i18n="ap.ok.d">Wir melden uns in Kürze bei Ihnen.</p>
+      </div>
+      <div id="applyError" class="hidden bg-red-50 border border-red-200 rounded-xl p-3 text-center text-red-600 text-sm" data-i18n="ap.err">
+        ✕ Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
       </div>
 
       <button type="submit" id="submitBtn"
@@ -887,7 +891,9 @@
   function openModal(title, location) {
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalLocationText').textContent = location || T('ap.loc.fallback');
+    document.getElementById('applyPosition').value = title;
     document.getElementById('applySuccess').classList.add('hidden');
+    document.getElementById('applyError').classList.add('hidden');
     document.getElementById('submitBtn').classList.remove('hidden');
     document.getElementById('applyForm').reset();
     document.getElementById('fileLabel').textContent = T('ap.upload');
@@ -915,17 +921,36 @@
   }
 
   // ── Application submit ─────────────────────
-  function submitApplication(e) {
+  async function submitApplication(e) {
     e.preventDefault();
+    const form = e.target;
     const btn = document.getElementById('submitBtn');
-    btn.textContent = 'Wird gesendet...';
-    btn.disabled = true;
+    const success = document.getElementById('applySuccess');
+    const error = document.getElementById('applyError');
 
-    // Simulate async submission
-    setTimeout(() => {
-      document.getElementById('applySuccess').classList.remove('hidden');
-      btn.classList.add('hidden');
-    }, 1200);
+    btn.textContent = currentLang === 'en' ? 'Sending…' : 'Wird gesendet…';
+    btn.disabled = true;
+    error.classList.add('hidden');
+
+    try {
+      const res = await fetch('https://formspree.io/f/FORMSPREE_APPLY_ID', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        success.classList.remove('hidden');
+        btn.classList.add('hidden');
+      } else {
+        error.classList.remove('hidden');
+        btn.textContent = T('ap.submit');
+        btn.disabled = false;
+      }
+    } catch {
+      error.classList.remove('hidden');
+      btn.textContent = T('ap.submit');
+      btn.disabled = false;
+    }
   }
 
   // ── Contact form submit ────────────────────
@@ -1173,6 +1198,7 @@
       'ap.cv':'Lebenslauf / Bewerbungsunterlagen','ap.upload':'PDF, DOC oder DOCX hochladen','ap.motiv':'Motivationsschreiben','ap.motiv.ph':'Warum möchten Sie bei ALEGIS arbeiten?',
       'ap.privacy':'Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der','ap.privacy.link':'Datenschutzerklärung','ap.privacy.end':'zu. *',
       'ap.submit':'Bewerbung absenden','ap.ok.t':'Bewerbung erfolgreich eingereicht!','ap.ok.d':'Wir melden uns in Kürze bei Ihnen.',
+      'ap.err':'✕ Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.',
     },
     en: {
       'nav.services':'Services','nav.team':'Team','nav.locations':'Locations','nav.career':'Career','nav.contact':'Contact','nav.cta':'Request Consultation',
@@ -1254,6 +1280,7 @@
       'ap.cv':'CV / Application Documents','ap.upload':'Upload PDF, DOC or DOCX','ap.motiv':'Cover Letter','ap.motiv.ph':'Why would you like to work at ALEGIS?',
       'ap.privacy':'I consent to the processing of my personal data in accordance with the','ap.privacy.link':'Privacy Policy','ap.privacy.end':'. *',
       'ap.submit':'Submit Application','ap.ok.t':'Application submitted successfully!','ap.ok.d':'We will get back to you shortly.',
+      'ap.err':'✕ Something went wrong. Please try again.',
     }
   };
 
