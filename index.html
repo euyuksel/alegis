@@ -306,8 +306,8 @@
       <div class="reveal bg-brand-light rounded-2xl overflow-hidden card-lift cursor-pointer group" onclick="openTeamModal('sb')">
         <div class="bg-gradient-to-br from-brand-navy to-brand-blue p-6">
           <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-white/20 border-4 border-white/40 flex items-center justify-center shrink-0">
-              <span class="text-white text-xl font-bold">SB</span>
+            <div class="w-16 h-16 rounded-full border-4 border-white/40 overflow-hidden shrink-0">
+              <img src="https://alegis.de/wp-content/uploads/2021/02/behn-square.jpg" alt="Sandra-E. Behn" class="w-full h-full object-cover">
             </div>
             <div>
               <h3 class="text-white text-lg font-bold">Sandra-E. Behn</h3>
@@ -326,8 +326,8 @@
       <div class="reveal bg-brand-light rounded-2xl overflow-hidden card-lift cursor-pointer group" onclick="openTeamModal('mb')">
         <div class="bg-gradient-to-br from-brand-navy to-brand-blue p-6">
           <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-white/20 border-4 border-white/40 flex items-center justify-center shrink-0">
-              <span class="text-white text-xl font-bold">MB</span>
+            <div class="w-16 h-16 rounded-full border-4 border-white/40 overflow-hidden shrink-0">
+              <img src="https://alegis.de/wp-content/uploads/2021/02/buder-square.jpg" alt="Michael Buder" class="w-full h-full object-cover">
             </div>
             <div>
               <h3 class="text-white text-lg font-bold">Michael Buder</h3>
@@ -933,7 +933,10 @@
   // ── Legal modals ───────────────────────────
   const teamData = {
     sb: {
-      initials: 'SB', name: 'Sandra-E. Behn',
+      initials: 'SB',
+      squarePhoto: 'https://alegis.de/wp-content/uploads/2021/02/behn-square.jpg',
+      fullPhoto: 'https://alegis.de/wp-content/uploads/2021/02/behn-full-new.jpg',
+      name: 'Sandra-E. Behn',
       roleKey: 'tm1.role', mdLabel: 'Geschäftsführerin',
       exp: ['sb.exp1','sb.exp2','sb.exp3','sb.exp4'],
       career: [{y:'1998',k:'sb.c1'},{y:'2002',k:'sb.c2'},{y:'2005',k:'sb.c3'},{y:'2007',k:'sb.c4'}],
@@ -942,7 +945,10 @@
       phone: '+49 211 959 897-12', phoneHref: 'tel:+4921195989712'
     },
     mb: {
-      initials: 'MB', name: 'Michael Buder',
+      initials: 'MB',
+      squarePhoto: 'https://alegis.de/wp-content/uploads/2021/02/buder-square.jpg',
+      fullPhoto: 'https://alegis.de/wp-content/uploads/2021/02/buder-full.jpg',
+      name: 'Michael Buder',
       roleKey: 'tm2.role', mdLabel: 'Geschäftsführer',
       exp: ['mb.exp1','mb.exp2','mb.exp3','mb.exp4'],
       career: [{y:'2000',k:'mb.c1'},{y:'2003',k:'mb.c2'},{y:'2006',k:'mb.c3'},{y:'2011',k:'mb.c4'}],
@@ -955,7 +961,10 @@
   function openTeamModal(id) {
     const d = teamData[id];
     if (!d) return;
-    document.getElementById('tmInitials').textContent = d.initials;
+    const sq = document.getElementById('tmSquarePhoto');
+    sq.src = d.squarePhoto; sq.alt = d.name;
+    const fp = document.getElementById('tmFullPhoto');
+    fp.src = d.fullPhoto; fp.alt = d.name;
     document.getElementById('tmName').textContent = d.name;
     document.getElementById('tmRole').textContent = T(d.roleKey);
     document.getElementById('tmMd').textContent = d.mdLabel;
@@ -1317,8 +1326,8 @@
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
       <div class="flex items-center gap-4">
-        <div class="w-16 h-16 rounded-full bg-white/20 border-4 border-white/40 flex items-center justify-center shrink-0">
-          <span id="tmInitials" class="text-white text-xl font-bold"></span>
+        <div class="w-16 h-16 rounded-full border-4 border-white/40 overflow-hidden shrink-0">
+          <img id="tmSquarePhoto" src="" alt="" class="w-full h-full object-cover">
         </div>
         <div>
           <h3 id="tmName" class="text-white text-xl font-bold"></h3>
@@ -1329,6 +1338,10 @@
     </div>
     <!-- Scrollable body -->
     <div class="overflow-y-auto p-6 space-y-5">
+      <!-- Full photo -->
+      <div class="rounded-xl overflow-hidden -mx-6 -mt-6">
+        <img id="tmFullPhoto" src="" alt="" class="w-full h-56 object-cover object-top">
+      </div>
       <!-- Expertise -->
       <div>
         <p class="text-xs font-bold text-brand-dark uppercase tracking-wider mb-2" data-i18n="tm.expertise">Schwerpunkte</p>
